@@ -39,6 +39,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 1% 2.5%;
+  height: fit-content;
 }
 
 .line {
@@ -52,7 +53,8 @@ header {
 
 .logo_img {
   display: flex;
-  width: 16%;
+  width: 15%;
+  height: 5%
 }
 
 .nav_list {
@@ -67,12 +69,14 @@ header {
   cursor: pointer;
   align-items: center;
   height: 10%;
-  width: 10%;
+  width: 5%;
+  background-color: transparent;
+  border: none;
 }
 
 
 .nav_list .nav_button .nav_img {
-  height: 10%;
+  height: 3%;
   width: 100%;
   cursor: pointer;
 }
@@ -92,7 +96,7 @@ header {
 .main .user_profile {
   display: flex;
   width: 95%;
-  height: 10%;
+  height: 8%;
   margin-top: 1%;
   margin-left: 2.5%;
 
@@ -107,6 +111,7 @@ header {
   background-color:rgba(255, 255, 255, 0);
   border: none;
   border-radius: var(--radious);
+  cursor: pointer;
 
   align-items: center;
   font: var(--color-gray);
