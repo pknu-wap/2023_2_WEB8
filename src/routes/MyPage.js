@@ -1,60 +1,96 @@
 import List from "../components/List";
 import Bookmarks from "../components/Bookmarks";
 import UsingProducts from "../components/UsingProducts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, ListGroup } from "react-bootstrap";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const userName = "gyunho";
 const skinType = "건성";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
+  // const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   const currentUser = getAuth().currentUser;
+  //   if (currentUser) {
+  //     setUser(currentUser);
+  //   }
+  // }, []);
 
   return (
     <div>
-      <div>
-        <img alt="profile" src="../images/profile-user.png" />
-        <h2>{userName}</h2>
-        <h2>피부타입 : {skinType}</h2>
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            setNavButton(0);
-          }}
-        >
-          내가 작성한 글
-        </button>
-        <button
-          onClick={() => {
-            setNavButton(1);
-          }}
-        >
-          즐겨찾기
-        </button>
-        <button
-          onClick={() => {
-            setNavButton(2);
-          }}
-        >
-          사용 제품 기록
-        </button>
-      </div>
-      {navButton === 0 && (
-        <div>
-          <List title="Post" />
-          <List title="comments" />
+      <Container>
+        <div class="row">
+          <div class="col-sm-3">
+            <img
+              alt="profile"
+              src="/images/profile-user.png"
+              style={{ objectFit: "cover", width: "250px" }}
+            />
+          </div>
+          <div class="col-sm-9">
+            <div class="col-3">
+              <h2>{userName}</h2>
+            </div>
+            <div class="col-3">
+              <h2>피부타입 : {skinType}</h2>
+            </div>
+          </div>
         </div>
-      )}
-      {navButton === 1 && (
-        <div>
-          <Bookmarks />
-        </div>
-      )}
-      {navButton === 2 && (
-        <div>
-          <UsingProducts />
-        </div>
-      )}
+      </Container>
+      <Container className="d-flex justify-content-center">
+        <ListGroup style={{ width: "280px" }}>
+          <ListGroup.Item
+            as="li"
+            active={navButton === 0}
+            onClick={() => {
+              setNavButton(0);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            내가 작성한 글
+          </ListGroup.Item>
+          <ListGroup.Item
+            as="li"
+            active={navButton === 1}
+            onClick={() => {
+              setNavButton(1);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            즐겨찾기
+          </ListGroup.Item>
+          <ListGroup.Item
+            as="li"
+            active={navButton === 2}
+            onClick={() => {
+              setNavButton(2);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            사용 제품 기록
+          </ListGroup.Item>
+        </ListGroup>
+        {navButton === 0 && (
+          <div style={{ marginRight: "90px" }}>
+            <List title="Posts" />
+            <List title="comments" />
+          </div>
+        )}
+        {navButton === 1 && (
+          <div>
+            <Bookmarks />
+          </div>
+        )}
+        {navButton === 2 && (
+          <div>
+            <UsingProducts />
+          </div>
+        )}
+      </Container>
     </div>
   );
 }

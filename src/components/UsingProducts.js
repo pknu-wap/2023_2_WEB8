@@ -1,25 +1,40 @@
 import Product from "./Product";
+import { Row, Col, Container, ListGroup } from "react-bootstrap";
 
 //임의의 데이터
 const MyUsingProduct = [
-  { product_id: 1, product_name: "시금치", product_img: "이미지 링크1" },
-  { product_id: 2, product_name: "handmade", product_img: "이미지 링크2" },
-  { product_id: 3, product_name: "night mode", product_img: "이미지 링크3" },
+  {
+    product_id: 1,
+    product_name: "시금치",
+    product_img: "images/spinach.jpg",
+  },
+  {
+    product_id: 2,
+    product_name: "handmade",
+    product_img: "images/handmade.jpg",
+  },
+  {
+    product_id: 3,
+    product_name: "night mode",
+    product_img: "images/night_mode.png",
+  },
 ];
 
 function UsingProducts() {
   return (
-    <div>
+    <Row className="row-cols-3">
       {MyUsingProduct.map((product) => {
         return (
-          <Product
-            id={product.product_id}
-            name={product.product_name}
-            img={product.product_img}
-          />
+          <Col>
+            <Product
+              id={product.product_id}
+              name={product.product_name}
+              img={product.product_img}
+            />
+          </Col>
         );
       })}
-    </div>
+    </Row>
   );
 }
 

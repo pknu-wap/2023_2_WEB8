@@ -1,7 +1,7 @@
 import MyPage from "./routes/MyPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() { 
+function App() {
   return (
     <BrowserRouter>
       <Routes>
