@@ -1,35 +1,24 @@
 import Product from "./Product";
-import { Row, Col, Container, ListGroup } from "react-bootstrap";
-
-//임의의 데이터
-const myBookmarks = [
-  {
-    product_id: 1,
-    product_name: "하삼동커피",
-    product_img: "images/hasandong.jpg",
-  },
-  {
-    product_id: 2,
-    product_name: "로지텍",
-    product_img: "images/logitec.jpg",
-  },
-  {
-    product_id: 3,
-    product_name: "베트남쌀국수",
-    product_img: "images/guksu.webp",
-  },
-];
+import { Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import fetchData from "../functions/fetchData";
 
 function Bookmarks() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchData(setProducts);
+  }, []);
+
   return (
-    <Row className="row-cols-3">
-      {myBookmarks.map((bookmark) => {
+    <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
+      {products.map((product) => {
         return (
-          <Col>
+          <Col key={product.id} style={{ width: "auto" }}>
             <Product
-              id={bookmark.product_id}
-              name={bookmark.product_name}
-              img={bookmark.product_img}
+              id={product.id}
+              name={product.name}
+              img={product.img}
+              price={product.price}
             />
           </Col>
         );

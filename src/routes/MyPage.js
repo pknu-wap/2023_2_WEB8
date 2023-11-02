@@ -42,7 +42,7 @@ function MyPage() {
         </div>
       </Container>
       <Container className="d-flex justify-content-center">
-        <ListGroup style={{ width: "280px" }}>
+        <ListGroup style={{ minWidth: "280px" }}>
           <ListGroup.Item
             as="li"
             active={navButton === 0}
