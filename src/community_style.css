@@ -117,6 +117,67 @@ header {
   font: var(--color-gray);
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 23px;
+  box-shadow: 0 0 20px var(--main-color1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0 40%;
+  font-size: 15px;
+}
+
+.modal-header .close {
+  cursor: pointer;
+}
+
+.modal-body {
+}
+
+.modal-body textarea {
+  border: none;
+  resize: none;
+  padding: var(--padding);
+  margin: 0 20px;
+}
+
+
+.post_submit_btn {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: fit-content;
+}
+
+#post_submit_btn {
+  margin: 0 2%;
+  background-color: var(--main-color1);
+  border-radius: 13px;
+  border: none;
+  width: 7%;
+  height: 20%;
+  cursor: pointer;
+}
+
+
 .main .sort_list_box {
   display: flex;
   flex-direction: column;
