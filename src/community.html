@@ -17,7 +17,8 @@
                 <img class="nav_img" src="images/bell.png" alt="알림">
             </button>
             <button class="nav_button">
-                <img class="nav_img" src="images/Mypage.png" alt="마이페이지">         </button>
+                <img class="nav_img" src="images/Mypage.png" alt="마이페이지">
+            </button>
         </div>
     </header>
 
@@ -26,8 +27,25 @@
     <div class="main">
         <!-- 게시물 작성하기 버튼-->
         <div class="user_profile">
-            <img src="images/user_profile.png" alt="사용자 프로필 사진">
+            <img src="images/profile.png" alt="사용자 프로필 사진">
             <button class="write_post_btn">게시물 작성하기</button>
+        </div>
+
+        <!-- 게시물 작성 모달 화면 -->
+        <div class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>게시물 작성</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <textarea name="post_title" id="post_title" cols="110" rows="1">제목</textarea>
+                    <textarea name="post_content" id="post_content" cols="110" rows="35">게시물 작성하기</textarea>
+                </div>
+                <div class="post_submit_btn">
+                    <button id="post_submit_btn">등록</button>
+                </div>
+            </div>
         </div>
 
         <!-- 최신순 필터 버튼 -->
@@ -40,10 +58,11 @@
 
         <!-- 게시물 올라오는 곳 -->
         <div class="post_list">
-            <!-- 게시물들이 여기에 나열됩니다. -->
+            <!-- 게시물들이 여기에 나열 -->
         </div>
     </div>
 </body>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="post.js"></script>
 </html>
