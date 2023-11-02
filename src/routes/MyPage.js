@@ -4,21 +4,12 @@ import UsingProducts from "../components/UsingProducts";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, ListGroup } from "react-bootstrap";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const userName = "gyunho";
 const skinType = "건성";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   const currentUser = getAuth().currentUser;
-  //   if (currentUser) {
-  //     setUser(currentUser);
-  //   }
-  // }, []);
 
   return (
     <div>
