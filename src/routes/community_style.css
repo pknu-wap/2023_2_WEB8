@@ -39,6 +39,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 1% 2.5%;
+  height: fit-content;
 }
 
 .line {
@@ -52,7 +53,8 @@ header {
 
 .logo_img {
   display: flex;
-  width: 16%;
+  width: 15%;
+  height: 5%
 }
 
 .nav_list {
@@ -67,12 +69,14 @@ header {
   cursor: pointer;
   align-items: center;
   height: 10%;
-  width: 10%;
+  width: 5%;
+  background-color: transparent;
+  border: none;
 }
 
 
 .nav_list .nav_button .nav_img {
-  height: 10%;
+  height: 3%;
   width: 100%;
   cursor: pointer;
 }
@@ -92,7 +96,7 @@ header {
 .main .user_profile {
   display: flex;
   width: 95%;
-  height: 10%;
+  height: 8%;
   margin-top: 1%;
   margin-left: 2.5%;
 
@@ -107,9 +111,78 @@ header {
   background-color:rgba(255, 255, 255, 0);
   border: none;
   border-radius: var(--radious);
+  cursor: pointer;
 
   align-items: center;
   font: var(--color-gray);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 23px;
+  box-shadow: 0 0 20px var(--main-color1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0 40%;
+  font-size: 15px;
+}
+
+.modal-header .close {
+  cursor: pointer;
+}
+
+/*.modal-body {
+} */
+
+.modal-body #post_title{
+  border: none;
+  border-bottom: 1px solid #7EAA92;
+  resize: none;
+  padding: 8px;
+  margin: 0 20px;
+}
+
+.modal-body #post_content {
+  border: none;
+  resize: none;
+  padding: 8px;
+  margin: 0 20px;
+}
+
+
+.post_submit_btn {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: fit-content;
+}
+
+#post_submit_btn {
+  margin: 0 2%;
+  background-color: var(--main-color1);
+  border-radius: 13px;
+  border: none;
+  width: 7%;
+  height: 20%;
+  cursor: pointer;
 }
 
 .main .sort_list_box {
@@ -127,4 +200,12 @@ header {
 .sort_list_box .dropdown_content a {
   text-decoration: none;
   color: inherit;
+}
+
+.post_summary {
+  padding: var(--padding);
+  background-color:rgba(255, 255, 255, 0.5);
+  border-radius: var(--radious);
+  cursor: pointer;
+  margin: 0 2%;
 }
