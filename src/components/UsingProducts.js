@@ -1,25 +1,29 @@
 import Product from "./Product";
-
-//임의의 데이터
-const MyUsingProduct = [
-  { product_id: 1, product_name: "시금치", product_img: "이미지 링크1" },
-  { product_id: 2, product_name: "handmade", product_img: "이미지 링크2" },
-  { product_id: 3, product_name: "night mode", product_img: "이미지 링크3" },
-];
+import { Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import fetchData from "../functions/fetchData";
 
 function UsingProducts() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchData(setProducts);
+  }, []);
+
   return (
-    <div>
-      {MyUsingProduct.map((product) => {
+    <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
+      {products.map((product) => {
         return (
-          <Product
-            id={product.product_id}
-            name={product.product_name}
-            img={product.product_img}
-          />
+          <Col>
+            <Product
+              id={product.id}
+              name={product.name}
+              img={product.img}
+              price={product.price}
+            />
+          </Col>
         );
       })}
-    </div>
+    </Row>
   );
 }
 
