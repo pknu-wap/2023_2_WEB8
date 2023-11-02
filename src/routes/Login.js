@@ -10,13 +10,11 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // 로그인 성공 시 처리
-        console.log("HI");
+        console.log(user.email);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // 로그인 실패 시 처리
         console.log(errorCode);
         console.log(errorMessage);
       });
