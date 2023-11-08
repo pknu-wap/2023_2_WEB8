@@ -1,8 +1,8 @@
 :root {
   /* color */
-  --main-color1: #9ED2BE;
-  --main-color2: #7EAA92;
-  --color-gray: #D3D3D3;
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
 
   /* size */
   --padding: 12px;
@@ -54,7 +54,7 @@ header {
 .logo_img {
   display: flex;
   width: 15%;
-  height: 5%
+  height: 5%;
 }
 
 .nav_list {
@@ -73,7 +73,6 @@ header {
   background-color: transparent;
   border: none;
 }
-
 
 .nav_list .nav_button .nav_img {
   height: 3%;
@@ -100,7 +99,7 @@ header {
   margin-top: 1%;
   margin-left: 2.5%;
 
-  background-color:rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: var(--radious);
 }
 
@@ -108,7 +107,7 @@ header {
   display: flex;
   width: 95%;
   margin-left: 0.5%;
-  background-color:rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   border-radius: var(--radious);
   cursor: pointer;
@@ -152,9 +151,9 @@ header {
 /*.modal-body {
 } */
 
-.modal-body #post_title{
+.modal-body #post_title {
   border: none;
-  border-bottom: 1px solid #7EAA92;
+  border-bottom: 1px solid #7eaa92;
   resize: none;
   padding: 8px;
   margin: 0 20px;
@@ -166,7 +165,6 @@ header {
   padding: 8px;
   margin: 0 20px;
 }
-
 
 .post_submit_btn {
   display: flex;
@@ -204,7 +202,7 @@ header {
 
 .post_summary {
   padding: var(--padding);
-  background-color:rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: var(--radious);
   cursor: pointer;
   margin: 0 2%;

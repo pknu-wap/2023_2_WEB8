@@ -14,19 +14,19 @@ function MyPage() {
   return (
     <div>
       <Container>
-        <div class="row">
-          <div class="col-sm-3">
+        <div className="row">
+          <div className="col-sm-3">
             <img
               alt="profile"
               src="/images/profile-user.png"
               style={{ objectFit: "cover", width: "250px" }}
             />
           </div>
-          <div class="col-sm-9">
-            <div class="col-3">
+          <div className="col-sm-9">
+            <div className="col-3">
               <h2>{userName}</h2>
             </div>
-            <div class="col-3">
+            <div className="col-3">
               <h2>피부타입 : {skinType}</h2>
             </div>
           </div>

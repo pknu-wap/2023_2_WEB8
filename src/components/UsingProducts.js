@@ -6,19 +6,21 @@ import fetchData from "../functions/fetchData";
 function UsingProducts() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetchData(setProducts);
+    fetchData(setProducts, "Dry");
   }, []);
 
   return (
     <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
       {products.map((product) => {
         return (
-          <Col>
+          <Col key={product.Id} style={{ width: "auto" }}>
             <Product
-              id={product.id}
-              name={product.name}
-              img={product.img}
-              price={product.price}
+              id={product.Id}
+              name={product.Name}
+              price={product.Price}
+              brand={product.Brand}
+              label={product.Label}
+              rank={product.Rank}
             />
           </Col>
         );
