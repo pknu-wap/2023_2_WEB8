@@ -75,8 +75,8 @@ document.querySelector("#post_submit_btn").addEventListener("click", function() 
     postList.appendChild(newPost); // postList에 자식 요소가 없는 경우 새로운 요소 추가
   }
 
-  postContentTextarea.value = '게시물 작성하기'; // 입력 필드의 값을 비움
-  postTitleTextarea.value = '제목';
+  postContentTextarea.value = ''; // 입력 필드의 값을 비움
+  postTitleTextarea.value = '';
   modal.style.display = 'none'; // 모달 닫기
 
   // 요약된 정보 클릭 시 새 창에 전체 내용 표시
@@ -91,6 +91,55 @@ document.querySelector("#post_submit_btn").addEventListener("click", function() 
       const top = (window.screen.height - height - 170) / 2;
       // 새 창에 전체 내용 텍스트로 표시
       let fullPostWindow = window.open('', 'FullPostWindow', `width=${width}, height=${height}, left=${left}, top=${top}`); // 새 창 열기
-      fullPostWindow.document.write(`<div>${postContent}</div>`); // 내용 채우기
+
+      fullPostWindow.document.write(`
+        <html>
+            <head>
+                <title>Full Post</title>
+                <!-- 여기에 필요한 스타일이나 외부 스타일시트를 링크할 수 있습니다. -->
+            </head>
+            <body>
+                <div>
+                    <h1>${postTitle}</h1>
+                    닉네임     날짜
+                    <p>${postContent}</p>
+
+                    <!-- 댓글 창 -->
+                    <div>
+                        <h2>댓글</h2>
+                        <textarea id="commentInput" placeholder="댓글을 입력하세요"></textarea>
+                        <button onclick="addComment()">댓글 등록</button>
+                        <ul id="commentList"></ul>
+                    </div>
+
+                    <!-- 좋아요 버튼 -->
+                    <div>
+                        <button onclick="likePost()">좋아요</button>
+                        <span id="likeCount">0</span>명이 좋아합니다.
+                    </div>
+                    <!-- 원하는 다양한 HTML 요소를 추가할 수 있습니다. -->
+                </div>
+
+                <script>
+                    // 댓글 등록 함수
+                    function addComment() {
+                        const commentInput = document.getElementById('commentInput');
+                        const commentList = document.getElementById('commentList');
+                        const newComment = document.createElement('li');
+                        newComment.textContent = commentInput.value;
+                        commentList.appendChild(newComment);
+                        commentInput.value = ''; // 입력 필드 초기화
+                    }
+
+                    // 좋아요 버튼 클릭 시
+                    let likeCount = 0;
+                    function likePost() {
+                        likeCount++;
+                        document.getElementById('likeCount').textContent = likeCount;
+                    }
+                </script>
+            </body>
+        </html>
+        `); // 내용 채우기
   });
 });
