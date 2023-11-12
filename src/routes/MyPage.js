@@ -1,15 +1,23 @@
 import List from "../components/List";
 import Bookmarks from "../components/Bookmarks";
 import UsingProducts from "../components/UsingProducts";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, ListGroup } from "react-bootstrap";
+import useAuth from "../functions/useAuth";
 
-const userName = "gyunho";
 const skinType = "건성";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
+
+  const currentUser = useAuth();
+  if (currentUser == null) {
+    return <div>Loading...</div>;
+  }
+  if (!currentUser) {
+    return <div>Please log in.</div>;
+  }
 
   return (
     <div>
@@ -24,7 +32,7 @@ function MyPage() {
           </div>
           <div className="col-sm-9">
             <div className="col-3">
-              <h2>{userName}</h2>
+              <h2>{currentUser.email}</h2>
             </div>
             <div className="col-3">
               <h2>피부타입 : {skinType}</h2>
