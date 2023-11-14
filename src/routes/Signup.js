@@ -1,68 +1,56 @@
-import React, { useState } from "react";
-import axios from "axios";
+// src/routes/Signup.js
+import React, { useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-function Signup() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post(
-        "http://localhost:3001/users",
-        formData
-      );
-      console.log("User registration successful:", response.data);
-      // 리디렉션 또는 다른 작업 수행
-      console.log("회원가입 성공:", response.data);
+      // 여기서 getAuth 함수를 호출해야 합니다.
+      const auth = getAuth(app); // 앱 객체를 전달하여 getAuth 함수 호출
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('회원가입 성공:', user);
     } catch (error) {
-      console.error("User registration failed:", error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('회원가입 실패:', errorCode, errorMessage);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Register</button>
+    <form onSubmit={handleSignup}>
+      <h1>SKINFOR</h1>
+      <h3>회원가입</h3>
+      <label htmlFor="email">이메일:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+
+      <label htmlFor="password">비밀번호:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+      <button type="submit">회원가입</button>
     </form>
   );
-}
+};
 
 export default Signup;
