@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { Link, Route, Routes } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -48,7 +49,9 @@ const Signup = () => {
         required
       />
 
-      <button type="submit">회원가입</button>
+      <button>
+        <Link to={`${process.env.PUBLIC_URL}/Login`}>회원가입</Link>
+      </button>
     </form>
   );
 };
