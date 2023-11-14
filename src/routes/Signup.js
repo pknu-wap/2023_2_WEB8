@@ -3,13 +3,7 @@ import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-// Firebase 구성 정보
-const firebaseConfig = {
-  // 여기에 Firebase 설정 정보를 추가
-};
 
-// Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
 
 const Signup = () => {
   const [email, setEmail] = useState('');
