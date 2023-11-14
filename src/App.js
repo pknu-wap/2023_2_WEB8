@@ -1,6 +1,7 @@
 import MyPage from "./routes/MyPage";
 import Login from "./routes/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Community from './routes/Community';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           path={`${process.env.PUBLIC_URL}/MyPage`}
           element={<MyPage />}
         ></Route>
+        <Route path={`${process.env.PUBLIC_URL}/community`}
+          element={<Community />}></Route>
       </Routes>
     </BrowserRouter>
   );

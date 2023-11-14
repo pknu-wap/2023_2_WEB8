@@ -1,14 +1,14 @@
 // 등록 버튼 클릭 시 게시글이 커뮤니티 main의 post_list에 등록
 document.querySelector("#post_submit_btn").addEventListener("click", function() {
   const postContentTextarea = document.querySelector('textarea[name="post_content"]'); // name이 post_content인 textarea 불러오기
-  let postContent = postContentTextarea.value; // value 속성은 사용자가 textarea에 입력한 텍스트 값
+  let postContent = postContentTextarea.value; // value : 사용자가 textarea에 입력한 텍스트 값
   const postTitleTextarea = document.querySelector('textarea[name="post_title"]');
   let postTitle = postTitleTextarea.value;
   const postList = document.querySelector('.post_list'); // 최신순으로 업로드 하기 위해 list 불러오기
 
- // 게시물에 대한 좋아요와 댓글 수 초기화
+  /* // 게시물에 대한 좋아요와 댓글 수 초기화
   likeCount = 0;
-  commentCount = 0;
+  commentCount = 0; */
   
   // 사용자가 입력한 줄바꿈을 <br> 태그로 변환 (textarea는 \n을 띄어쓰기 하나로 인식)
   // g 플래그는 전역적으로 문자열 내의 모든 줄바꿈을 찾는 역 (안 쓰면 첫 번째로 발견한 줄바꿈 문자(\n)만을 변경)
@@ -18,8 +18,8 @@ document.querySelector("#post_submit_btn").addEventListener("click", function() 
   let newPost = document.createElement('div');
   newPost.className = 'post';
 
-   // 게시물에 대한 고유한 ID 생성
-   const postId = Date.now(); // 현재 시간을 사용하거나, 다른 방법을 사용할 수 있습니다.
+  // 게시물에 대한 고유한 ID 생성
+  const postId = Date.now(); // 현재 시간을 사용
 
   // 200자 이상 넘어갈 시 요약된 형태로 보여주기
   if(postContent.length >= 200) {
@@ -113,29 +113,11 @@ document.querySelector("#post_submit_btn").addEventListener("click", function() 
                   <!-- 좋아요 버튼 -->
                   <div>
                       <button onclick="likePost()">좋아요</button>
-                      <span id="likeCount">0</span>명이 좋아합니다.
+                      <span id="likeCount-${postId}">0</span>명이 좋아합니다.
                   </div>
                   <!-- 원하는 다양한 HTML 요소를 추가할 수 있습니다. -->
               </div>
-
-              <script>
-                  // 댓글 등록 함수
-                  function addComment() {
-                      const commentInput = document.getElementById('commentInput');
-                      const commentList = document.getElementById('commentList');
-                      const newComment = document.createElement('li');
-                      newComment.textContent = commentInput.value;
-                      commentList.appendChild(newComment);
-                      commentInput.value = ''; // 입력 필드 초기화
-                  }
-
-                  // 좋아요 버튼 클릭 시
-                  let likeCount = 0;
-                  function likePost() {
-                      likeCount++;
-                      document.getElementById('likeCount').textContent = likeCount;
-                  }
-              </script>
+              <script src="likeComment.js"></script>
           </body>
       </html>
       `); // 내용 채우기

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import './community_style.css';
 import './community_post.css';
 
@@ -98,4 +97,4 @@ const Community = () => {
   );
 };
 
-ReactDOM.render(<Community />, document.getElementById('root'));
+export default Community;
