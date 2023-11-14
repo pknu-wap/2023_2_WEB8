@@ -1,10 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import {
-  getAuth,
-  setPersistence,
-  browserSessionPersistence,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FB_API_KEY,
@@ -19,14 +15,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    console.log("로그인 상태 지속성 설정 성공");
-    // 여기에 필요한 다른 초기화 로직을 추가할 수 있습니다.
-  })
-  .catch((error) => {
-    console.error("로그인 상태 지속성 설정 실패:", error);
-  });
 
 export { app, db, auth };

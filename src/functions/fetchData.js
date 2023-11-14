@@ -1,6 +1,6 @@
 import { db } from "../firebase";
 import { collection, where, getDocs, query } from "firebase/firestore";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+//import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const fetchData = async (setProducts, skinType) => {
   try {
@@ -11,7 +11,7 @@ const fetchData = async (setProducts, skinType) => {
     );
     console.log(skinType);
     const querySnapshot = await getDocs(q);
-    const storage = getStorage();
+    //const storage = getStorage();
 
     const productData = [];
 

@@ -58,7 +58,6 @@ header {
 }
 
 .user_profile {
-  
 }
 
 .nav_list {
@@ -120,15 +119,6 @@ header {
   font: var(--color-gray);
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-}
-
 .modal-content {
   background-color: #fff;
   padding: 10px;
@@ -137,9 +127,6 @@ header {
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -152,8 +139,10 @@ header {
   cursor: pointer;
 }
 
-/*.modal-body {
-} */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
 
 .modal-body #post_title {
   border: none;
