@@ -22,16 +22,16 @@ const Community = () => {
   return (
     <div>
       <header>
-        <img className="logo_img" src="../../public/images/logo_black.png" alt="LOGO" />
+        <img className="logo_img" src="./images/logo_black.png" alt="LOGO" />
         <div className="nav_list">
           <button className="nav_button">
-            <img className="nav_img" src="../../public/images/cosmetics.png" alt="화장품 페이지" />
+            <img className="nav_img" src="./images/cosmetics.png" alt="화장품 페이지" />
           </button>
           <button className="nav_button">
-            <img className="nav_img" src="../../public/images/bell.png" alt="알림" />
+            <img className="nav_img" src="./images/bell.png" alt="알림" />
           </button>
           <button className="nav_button">
-            <img className="nav_img" src="../../public/images/Mypage.png" alt="마이페이지" />
+            <img className="nav_img" src="./images/Mypage.png" alt="마이페이지" />
           </button>
         </div>
       </header>
@@ -40,11 +40,11 @@ const Community = () => {
 
       <div className="main">
         <div className="user_profile">
-          <img src="../../public/images/profile.png" alt="사용자 프로필 사진" />
+          <img src="./images/profile.png" alt="사용자 프로필 사진"/>
           <button className="write_post_btn" onClick={openModal}>게시물 작성하기</button>
         </div>
 
-        <div className="modal" style={{ display: isModalVisible ? 'block' : 'none' }}>
+        <div className="modal" style={{ display: isModalVisible ? 'block' : 'none'}}>
           <div className="modal-content">
             <div className="modal-header">
               <h2>게시물 작성</h2>
