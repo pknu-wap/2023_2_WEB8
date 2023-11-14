@@ -1,66 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="community_style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="community_style.css">
+    <link rel="stylesheet" href="community_post.css">
     <title>Community</title>
   </head>
   <body>
     <header>
-      <img class="logo_img" src="../images/logo_black.png" alt="LOGO" />
-      <div class="nav_list">
-        <button class="nav_button">
-          <img
-            class="nav_img"
-            src="../images/cosmetics.png"
-            alt="화장품 페이지"
-          />
-        </button>
-        <button class="nav_button">
-          <img class="nav_img" src="../images/bell.png" alt="알림" />
-        </button>
-        <button class="nav_button">
-          <img class="nav_img" src="../images/Mypage.png" alt="마이페이지" />
-        </button>
-      </div>
+        <img class="logo_img" src="../../public/images/logo_black.png" alt="LOGO" >
+        <div class="nav_list">
+            <button class="nav_button">
+                <img class="nav_img" src="../../public/images/cosmetics.png" alt="화장품 페이지">
+            </button>
+            <button class="nav_button">
+                <img class="nav_img" src="../../public/images/bell.png" alt="알림">
+            </button>
+            <button class="nav_button">
+                <img class="nav_img" src="../../public/images/Mypage.png" alt="마이페이지">
+            </button>
+        </div>
     </header>
 
     <hr class="line" />
 
     <div class="main">
-      <!-- 게시물 작성하기 버튼-->
-      <div class="user_profile">
-        <img src="../images/profile.png" alt="사용자 프로필 사진" />
-        <button class="write_post_btn">게시물 작성하기</button>
-      </div>
+        <!-- 게시물 작성하기 버튼-->
+        <div class="user_profile">
+            <img src="../../public/images/profile.png" alt="사용자 프로필 사진">
+            <button class="write_post_btn">게시물 작성하기</button>
+        </div>
 
-      <!-- 게시물 작성 모달 화면 -->
-      <div class="modal" style="display: none">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>게시물 작성</h2>
-            <span class="close">&times;</span>
-          </div>
-          <div class="modal-body">
-            <textarea
-              name="post_title"
-              id="post_title"
-              cols="110"
-              rows="1"
-              placeholder="제목"
-            ></textarea>
-            <textarea
-              name="post_content"
-              id="post_content"
-              cols="110"
-              rows="35"
-              placeholder="게시물 작성하기"
-            ></textarea>
-          </div>
-          <div class="post_submit_btn">
-            <button id="post_submit_btn">등록</button>
-          </div>
+        <!-- 게시물 작성 모달 화면 -->
+        <div class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>게시물 작성</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <textarea name="post_title" id="post_title" placeholder="제목" cols="110" rows="1"></textarea>
+                    <textarea name="post_content" id="post_content" placeholder="게시물 작성하기" cols="110" rows="35"></textarea>
+                </div>
+                <div class="post_submit_btn">
+                    <button id="post_submit_btn">등록</button>
+                </div>
+            </div>
         </div>
       </div>
 
@@ -77,14 +63,10 @@
         <!-- 게시물들이 여기에 나열 -->
       </div>
     </div>
-  </body>
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
-  <script src="post.js"></script>
+    <script src="likeComment.js"></script>
+    <script src="modal.js"></script>
+    <script src="submit.js"></script>
+</body>
+<!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
 </html>
