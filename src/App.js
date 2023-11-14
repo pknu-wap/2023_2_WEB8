@@ -5,7 +5,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<MyPage />}></Route>
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<RegistrationLogin />}></Route>
       </Routes>
     </BrowserRouter>
   );
