@@ -12,17 +12,12 @@ const Box = styled.div`
   background: #ffffff;
 `;
 
-function Product({ id, name, img, price }) {
+function Product({ id, name, price, rank }) {
   return (
     <Box>
-      <img
-        src={process.env.PUBLIC_URL + img}
-        alt={id}
-        className="m-auto"
-        style={{ maxWidth: "100%", height: "auto", objectFit: "cover" }}
-      />
       <div className="d-flex justify-content-around py-3">{name}</div>
       <div className="d-flex justify-content-around py-3">{price}</div>
+      <div className="d-flex justify-content-around py-3">{rank}</div>
     </Box>
   );
 }

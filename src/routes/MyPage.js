@@ -1,32 +1,40 @@
 import List from "../components/List";
 import Bookmarks from "../components/Bookmarks";
 import UsingProducts from "../components/UsingProducts";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, ListGroup } from "react-bootstrap";
+import useAuth from "../functions/useAuth";
 
-const userName = "gyunho";
 const skinType = "건성";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
 
+  const currentUser = useAuth();
+  if (currentUser == null) {
+    return <div>Loading...</div>;
+  }
+  if (!currentUser) {
+    return <div>Please log in.</div>;
+  }
+
   return (
     <div>
       <Container>
-        <div class="row">
-          <div class="col-sm-3">
+        <div className="row">
+          <div className="col-sm-3">
             <img
               alt="profile"
               src="/images/profile-user.png"
               style={{ objectFit: "cover", width: "250px" }}
             />
           </div>
-          <div class="col-sm-9">
-            <div class="col-3">
-              <h2>{userName}</h2>
+          <div className="col-sm-9">
+            <div className="col-3">
+              <h2>{currentUser.email}</h2>
             </div>
-            <div class="col-3">
+            <div className="col-3">
               <h2>피부타입 : {skinType}</h2>
             </div>
           </div>

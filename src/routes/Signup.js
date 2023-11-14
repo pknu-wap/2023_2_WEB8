@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
-function RegistrationForm() {
+function Signup() {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -16,12 +16,15 @@ function RegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/users', formData);
-      console.log('User registration successful:', response.data);
+      const response = await axios.post(
+        "http://localhost:3001/users",
+        formData
+      );
+      console.log("User registration successful:", response.data);
       // 리디렉션 또는 다른 작업 수행
-      console.log('회원가입 성공:', response.data);
+      console.log("회원가입 성공:", response.data);
     } catch (error) {
-      console.error('User registration failed:', error);
+      console.error("User registration failed:", error);
     }
   };
 
@@ -62,4 +65,4 @@ function RegistrationForm() {
   );
 }
 
-export default RegistrationForm;
+export default Signup;
