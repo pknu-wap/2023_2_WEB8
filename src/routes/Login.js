@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import LogoutBtn from "../components/LogoutBtn";
+import LogoutBtn from "../components/logoutBtn";
 
 const RegistrationForm = () => {
   const [email, setEmail] = useState("");

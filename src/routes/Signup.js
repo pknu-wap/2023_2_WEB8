@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 
 const Signup = () => {
@@ -13,7 +14,6 @@ const Signup = () => {
 
     try {
       // 여기서 getAuth 함수를 호출해야 합니다.
-      const auth = getAuth(app); // 앱 객체를 전달하여 getAuth 함수 호출
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log('회원가입 성공:', user);
