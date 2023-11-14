@@ -15,15 +15,14 @@ createUserWithEmailAndPassword(auth, email, password)
     // ..
   });
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBeMh1LhwlWgraosAWS41kFhSre19VczfI",
-  authDomain: "login-5fcfb.firebaseapp.com",
-  projectId: "login-5fcfb",
-  storageBucket: "login-5fcfb.appspot.com",
-  messagingSenderId: "599211704050",
-  appId: "1:599211704050:web:5384548870be406d0a1a6b",
-  measurementId: "G-K7DKT9GPKQ"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBV2hmKCeUcSy64N2tmY7A1zbuKvHiLGMo",
+    authDomain: "web8-984aa.firebaseapp.com",
+    projectId: "web8-984aa",
+    storageBucket: "web8-984aa.appspot.com",
+    messagingSenderId: "342957194597",
+    appId: "1:342957194597:web:62c4ff72889a02b3f6758c"
+  };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
