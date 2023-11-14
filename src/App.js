@@ -3,6 +3,7 @@ import Community from './routes/community';
 import MyPage from "./routes/MyPage";
 import RegistrationForm from "./routes/Login";
 import Signup from "./routes/Signup";
+import CosmeticLanking from "./routes/cosmeticPage";
 
 function App() {
   return (
@@ -22,6 +23,13 @@ function App() {
           path={`${process.env.PUBLIC_URL}/signup`}
           element={<Signup />}
         ></Route>
+        <Route
+          path={`${process.env.PUBLIC_URL}/cosmeticLanking`}
+          element={<CosmeticLanking />}
+        ></Route>
+
+        
+
       </Routes>
     </BrowserRouter>
   );
