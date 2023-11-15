@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import './community_style.css';
 import './community_post.css';
+
+import Navbars from '../bootstrap/Navbars';
 
 const Community = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -21,7 +24,7 @@ const Community = () => {
 
   return (
     <div>
-      <header>
+{/*       <header>
         <img className="logo_img" src="./images/logo_black.png" alt="LOGO" />
         <div className="nav_list">
           <button className="nav_button">
@@ -34,7 +37,8 @@ const Community = () => {
             <img className="nav_img" src="./images/Mypage.png" alt="마이페이지" />
           </button>
         </div>
-      </header>
+      </header> */}
+      <Navbars />
 
       <hr className="line" />
 
