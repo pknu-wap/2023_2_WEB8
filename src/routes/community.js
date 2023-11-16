@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import './community_style.css';
 import './community_post.css';
+
+import Navbars from '../components/Navbars.js';
+import Like from '../components/Like.js';
 
 const Community = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -8,40 +12,49 @@ const Community = () => {
   const [postContent, setPostContent] = useState('');
   const [posts, setPosts] = useState([]);
 
+
   const openModal = () => setModalVisible(true);
-  const closeModal = () => setModalVisible(false);
+  const closeModal = () => {
+    setModalVisible(false);
+    // 모달 닫을 때 제목과 내용 초기화
+    setPostTitle('');
+    setPostContent('');
+  };
 
   const handleSubmit = () => {
-    // 게시물 등록 로직을 추가하세요.
-    // 현재는 단순히 posts 배열에 새로운 게시물을 추가하는 예시입니다.
-    const newPost = { title: postTitle, content: postContent };
-    setPosts([...posts, newPost]);
+    const newPost = { title: postTitle, content: postContent};
+    setPosts([newPost, ...posts]); // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
     closeModal();
   };
 
+  const handleLike = (index, likeValue) => {
+    const updatedPosts = [...posts];
+    updatedPosts[index].likes = (updatedPosts[index].likes || 0) + likeValue;
+    setPosts(updatedPosts);
+  };
+
+
   return (
     <div>
-      <header>
-        <img className="logo_img" src="./images/logo_black.png" alt="LOGO" />
-        <div className="nav_list">
-          <button className="nav_button">
-            <img className="nav_img" src="./images/cosmetics.png" alt="화장품 페이지" />
-          </button>
-          <button className="nav_button">
-            <img className="nav_img" src="./images/bell.png" alt="알림" />
-          </button>
-          <button className="nav_button">
-            <img className="nav_img" src="./images/Mypage.png" alt="마이페이지" />
-          </button>
-        </div>
-      </header>
-
-      <hr className="line" />
+      <Navbars />
 
       <div className="main">
         <div className="user_profile">
           <img src="./images/profile.png" alt="사용자 프로필 사진"/>
           <button className="write_post_btn" onClick={openModal}>게시물 작성하기</button>
+        </div>
+
+        <div className="post_list">
+          {posts.map((post, index) => (
+            <div key={index} className="post_summary">
+              <div className="post_title_sum">{post.title}</div>
+              <div className="user_info">닉네임 날짜</div>
+              <div className="post_cont_sum">
+                {post.content.length > 200 ? post.content.substring(0, 200) + '...' : post.content}
+              </div>
+              <Like likes={post.likes} handleLike={(likeValue) => handleLike(index, likeValue)} />
+            </div>
+          ))}
         </div>
 
         <div className="modal" style={{ display: isModalVisible ? 'block' : 'none'}}>
@@ -75,24 +88,7 @@ const Community = () => {
             </div>
           </div>
         </div>
-
-        <div className="sort_list_box">
-          <div className="dropdown_content">
-            <a href="latest_order">최신순</a>
-            <a href="#" className="hidden">인기순</a>
-          </div>
-        </div>
-
-        <div className="post_list">
-          {posts.map((post, index) => (
-            <div key={index} className="post_summary">
-              <div className="post_title_sum">{post.title}</div>
-              <div className="user_info">닉네임 날짜</div>
-              <div className="post_cont_sum">{post.content}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </div>    
     </div>
   );
 };

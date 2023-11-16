@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
+
+:root {
+  /* color */
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
+
+  /* size */
+  --padding: 12px;
+  --radious: 10px;
+}
+
+.sort_list_box {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.sort_list_box:hover .dropdown_content {
+  display: block;
+}
+
+.dropdown_content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown_content a:hover {
+  background-color: #ddd;
+}
+
+.hidden {
+  display: none;
+}
