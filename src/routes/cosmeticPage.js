@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import ShowProducts from "../components/ShowProducts";
+
 function CosmeticLanking() {
   return (
     <div className="cosmetic_page">
@@ -31,6 +33,7 @@ function CosmeticLanking() {
           </ul>
         </div>
         <div className="lineStyle"></div>
+        <ShowProducts skinType={"Oily"} />
       </div>
 
       <div className="ranking">

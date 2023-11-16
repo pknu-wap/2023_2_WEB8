@@ -1,13 +1,14 @@
 import Product from "./Product";
-import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
-function ShowProducts({ skinType, userUid }) {
+function ShowProducts(props) {
   const [products, setProducts] = useState([]);
+  const { skinType, userUid } = props;
   useEffect(() => {
-    if (userUid) fetchData(setProducts, userUid);
-    else if (skinType) fetchData(setProducts, skinType);
+    if (userUid != undefined) fetchData(setProducts, { userUid: userUid });
+    else if (skinType != undefined)
+      fetchData(setProducts, { skinType: skinType });
     else console.log("error in ShowProducts");
   }, []);
 
