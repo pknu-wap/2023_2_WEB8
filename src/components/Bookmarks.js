@@ -1,5 +1,4 @@
 import Product from "./Product";
-import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
@@ -10,10 +9,10 @@ function Bookmarks() {
   }, []);
 
   return (
-    <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
+    <div>
       {products.map((product) => {
         return (
-          <Col key={product.Id} style={{ width: "auto" }}>
+          <div key={product.Id}>
             <Product
               id={product.Id}
               name={product.Name}
@@ -22,10 +21,10 @@ function Bookmarks() {
               label={product.Label}
               rank={product.Rank}
             />
-          </Col>
+          </div>
         );
       })}
-    </Row>
+    </div>
   );
 }
 

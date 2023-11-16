@@ -3,17 +3,19 @@ import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
-function UsingProducts() {
+function ShowProducts({ skinType, userUid }) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetchData(setProducts, "Dry");
+    if (userUid) fetchData(setProducts, userUid);
+    else if (skinType) fetchData(setProducts, skinType);
+    else console.log("error in ShowProducts");
   }, []);
 
   return (
-    <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
+    <div>
       {products.map((product) => {
         return (
-          <Col key={product.Id} style={{ width: "auto" }}>
+          <div key={product.Id}>
             <Product
               id={product.Id}
               name={product.Name}
@@ -22,11 +24,11 @@ function UsingProducts() {
               label={product.Label}
               rank={product.Rank}
             />
-          </Col>
+          </div>
         );
       })}
-    </Row>
+    </div>
   );
 }
 
-export default UsingProducts;
+export default ShowProducts;

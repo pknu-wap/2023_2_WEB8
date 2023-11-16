@@ -18,24 +18,14 @@ const articles = [
   { id: 3, title: "데이터", content: "받아오기", img: "images/pic3.jpg" },
 ];
 
-const Box = styled.div`
-  display: flex;
-  width: 900px;
-  flex-direction: column;
-  padding: 0px 10px;
-  margin: 0px 0px;
-  height: 660px;
-  background: #ffffff;
-`;
-
 //더보기 만들기
 function List({ title }) {
   return (
-    <Box>
-      <h3 style={{ fontWeight: "bold", fontSize: "45px" }}>{title}</h3>
+    <div>
+      <h3>{title}</h3>
       {articles.map((article) => {
         return (
-          <div>
+          <div key={article.id}>
             <hr></hr>
             <Article
               key={article.id}
@@ -46,7 +36,7 @@ function List({ title }) {
           </div>
         );
       })}
-    </Box>
+    </div>
   );
 }
 

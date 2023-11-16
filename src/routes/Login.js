@@ -29,7 +29,7 @@ const RegistrationForm = () => {
             console.error("로그인 상태 지속성 설정 실패:", error);
           });
 
-        navigate(`${process.env.PUBLIC_URL}/cosmeticLanking`);
+        navigate(`${process.env.PUBLIC_URL}/main`);
       })
       .catch((error) => {
         const errorCode = error.code;
