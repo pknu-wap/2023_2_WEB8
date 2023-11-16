@@ -94,7 +94,6 @@ header {
   color: var(--color-gray);
   transition: color 0.3s ease-in-out;
 }
-
 .main .user_profile:hover .write_post_btn {
   color: var(--main-color1); /* 마우스 호버시 텍스트 색상 변경 */
 }
@@ -134,9 +133,6 @@ header {
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -152,7 +148,9 @@ header {
 
 .modal-body {
   overflow-y: auto; /* 내용이 모달의 높이를 벗어나면 스크롤 허용 */
-  max-height: calc(100vh - 120px); /* 모달의 높이에서 헤더와 푸터의 높이를 빼고 나머지 공간만큼 허용 */
+  max-height: calc(
+    100vh - 120px
+  ); /* 모달의 높이에서 헤더와 푸터의 높이를 빼고 나머지 공간만큼 허용 */
 }
 
 .modal-body textarea {
@@ -179,4 +177,3 @@ header {
   height: 20%;
   cursor: pointer;
 }
-
