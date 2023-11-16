@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
+
+:root {
+  /* color */
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
+
+  /* size */
+  --padding: 12px;
+  --radious: 10px;
+}
+
+.logo_img {
+  width: 12%;
+  height: auto;
+  cursor: pointer;
+}
+
+.navbar-style-7 {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeInOut 1s ease-in-out infinite;
+  border-radius: 10px;
+}
+
+.nav_list {
+  display: flex;
+  gap: 10px;
+}
+
+.nav_button {
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.nav_button:hover {
+  background-color: var(--main-color1);
+}
+
+.nav_img {
+  width: 40px;
+}
