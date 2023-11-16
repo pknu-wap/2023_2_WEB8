@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
+import useAuth from "../functions/useAuth.js";
 
 import Navbars from "../components/Navbars.js";
 import Like from "../components/Like.js";

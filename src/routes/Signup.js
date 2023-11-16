@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import createUserInFirestore from "../functions/createUserInFiresotre";
+import "../css/Signup.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSignup}>
+    <form className="signup-form" onSubmit={handleSignup}>
       <h1>SKINFOR</h1>
       <h3>회원가입</h3>
       <label htmlFor="email">이메일:</label>
