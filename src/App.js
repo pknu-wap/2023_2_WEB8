@@ -26,7 +26,7 @@ function App() {
           element={<Signup />}
         ></Route>
         <Route
-          path={`${process.env.PUBLIC_URL}/cosmeticLanking`}
+          path={`${process.env.PUBLIC_URL}/main`}
           element={<CosmeticLanking />}
         ></Route>
       </Routes>
