@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import LogoutBtn from "../components/logoutBtn";
+import { Link, Route, Routes } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,9 @@ const RegistrationForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin}>
+        <Link to={`${process.env.PUBLIC_URL}/cosmeticLanking`}>Login</Link>
+      </button>
       <LogoutBtn />
     </div>
   );

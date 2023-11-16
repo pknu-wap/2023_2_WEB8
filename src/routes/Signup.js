@@ -1,26 +1,30 @@
 // src/routes/Signup.js
-import React, { useState } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
-
+import React, { useState } from "react";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { Link, Route, Routes } from "react-router-dom";
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
       // 여기서 getAuth 함수를 호출해야 합니다.
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-      console.log('회원가입 성공:', user);
+      console.log("회원가입 성공:", user);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error('회원가입 실패:', errorCode, errorMessage);
+      console.error("회원가입 실패:", errorCode, errorMessage);
     }
   };
 
@@ -48,7 +52,9 @@ const Signup = () => {
         required
       />
 
-      <button type="submit">회원가입</button>
+      <button>
+        <Link to={`${process.env.PUBLIC_URL}/Login`}>회원가입</Link>
+      </button>
     </form>
   );
 };

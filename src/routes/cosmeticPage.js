@@ -1,3 +1,4 @@
+import { Link, Route, Routes } from 'react-router-dom';
 function Cosmetic() {
   return (
     <div className="cosmetic_page">
@@ -8,18 +9,24 @@ function Cosmetic() {
             <img src="image/logo.png" className="logo-size"></img>
           </div>
 
+          <ul>  
+            <li>
+              <Link to={`${process.env.PUBLIC_URL}/login`}>로그인</Link>
+            </li>
+          
+            <li>
+              <Link to={`${process.env.PUBLIC_URL}/Signup`}>회원가입</Link>
+            </li>
+          </ul>
+
           <ul className="nav">
             <li>
               <img src="image/community.png"></img>
-              <a href="#">커뮤니티</a>
-            </li>
-            <li>
-              <img src="image/bell.png"></img>
-              <a href="#">알림</a>
+              <Link to={`${process.env.PUBLIC_URL}/Community`}>커뮤니티</Link>
             </li>
             <li>
               <img src="image/myuserpage.png"></img>
-              <a href="#">마이페이지</a>
+              <Link to={`${process.env.PUBLIC_URL}/Mypage`}>마이페이지</Link>
             </li>
           </ul>
         </div>
