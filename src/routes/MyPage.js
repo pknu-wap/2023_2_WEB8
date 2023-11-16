@@ -5,6 +5,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, ListGroup } from "react-bootstrap";
 import useAuth from "../functions/useAuth";
+import Navbars from "../components/Navbars";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
@@ -21,6 +22,7 @@ function MyPage() {
 
   return (
     <div>
+      <Navbars />
       <Container>
         <div className="row">
           <div className="col-sm-3">
