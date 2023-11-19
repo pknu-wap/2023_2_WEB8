@@ -1,19 +1,22 @@
 import Product from "./Product";
-import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
-function UsingProducts() {
+function ShowProducts(props) {
   const [products, setProducts] = useState([]);
+  const { skinType, userUid } = props;
   useEffect(() => {
-    fetchData(setProducts, "Dry");
+    if (userUid != undefined) fetchData(setProducts, { userUid: userUid });
+    else if (skinType != undefined)
+      fetchData(setProducts, { skinType: skinType });
+    else console.log("error in ShowProducts");
   }, []);
 
   return (
-    <Row className="row-cols-3" style={{ minWidth: "1008px" }}>
+    <div>
       {products.map((product) => {
         return (
-          <Col key={product.Id} style={{ width: "auto" }}>
+          <div key={product.Id}>
             <Product
               id={product.Id}
               name={product.Name}
@@ -22,11 +25,11 @@ function UsingProducts() {
               label={product.Label}
               rank={product.Rank}
             />
-          </Col>
+          </div>
         );
       })}
-    </Row>
+    </div>
   );
 }
 
-export default UsingProducts;
+export default ShowProducts;

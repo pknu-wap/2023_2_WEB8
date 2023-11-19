@@ -1,9 +1,8 @@
 import List from "../components/List";
 import Bookmarks from "../components/Bookmarks";
-import UsingProducts from "../components/UsingProducts";
+import ShowProducts from "../components/ShowProducts";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, ListGroup } from "react-bootstrap";
 import useAuth from "../functions/useAuth";
 import Navbars from "../components/Navbars";
 
@@ -22,61 +21,46 @@ function MyPage() {
 
   return (
     <div>
-      <Navbars />
-      <Container>
-        <div className="row">
-          <div className="col-sm-3">
-            <img
-              alt="profile"
-              src="/images/profile-user.png"
-              style={{ objectFit: "cover", width: "250px" }}
-            />
           </div>
-          <div className="col-sm-9">
-            <div className="col-9">
+          <div>
+            <div>
               <h2>안녕하세요. {currentUser.userName}님!</h2>
             </div>
-            <div className="col-9">
+            <div>
               <h2>피부타입 : {currentUser.skinType}</h2>
             </div>
           </div>
         </div>
-      </Container>
-      <Container className="d-flex justify-content-center">
-        <ListGroup style={{ minWidth: "280px" }}>
-          <ListGroup.Item
-            as="li"
-            active={navButton === 0}
+      </div>
+      <div>
+        <ul>
+          <li
+            className={navButton === 0 ? "active" : ""}
             onClick={() => {
               setNavButton(0);
             }}
-            style={{ cursor: "pointer" }}
           >
             내가 작성한 글
-          </ListGroup.Item>
-          <ListGroup.Item
-            as="li"
-            active={navButton === 1}
+          </li>
+          <li
+            className={navButton === 0 ? "active" : ""}
             onClick={() => {
               setNavButton(1);
             }}
-            style={{ cursor: "pointer" }}
           >
             즐겨찾기
-          </ListGroup.Item>
-          <ListGroup.Item
-            as="li"
-            active={navButton === 2}
+          </li>
+          <li
+            className={navButton === 0 ? "active" : ""}
             onClick={() => {
               setNavButton(2);
             }}
-            style={{ cursor: "pointer" }}
           >
             사용 제품 기록
-          </ListGroup.Item>
-        </ListGroup>
+          </li>
+        </ul>
         {navButton === 0 && (
-          <div style={{ marginRight: "90px" }}>
+          <div>
             <List title="Posts" />
             <List title="comments" />
           </div>
@@ -88,10 +72,10 @@ function MyPage() {
         )}
         {navButton === 2 && (
           <div>
-            <UsingProducts />
+            <ShowProducts />
           </div>
         )}
-      </Container>
+      </div>
     </div>
   );
 }

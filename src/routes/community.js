@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
-import useAuth from "../functions/useAuth.js";
-
 import Navbars from "../components/Navbars.js";
 import Like from "../components/Like.js";
+import useAuth from "../functions/useAuth.js";
+import createPostInFirestore from "../functions/createPostInFirestore.js";
 
 const Community = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -24,21 +24,19 @@ const Community = () => {
 
   const handleSubmit = () => {
     const newPost = { title: postTitle, content: postContent };
+    createPostInFirestore(currentUser, newPost); //포스트를 파이어베이스에 등록함
     setPosts([newPost, ...posts]); // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
 
     closeModal();
   };
 
   const handleLike = (index, likeValue) => {
-    const updatedPosts = [...posts];
-    updatedPosts[index].likes = (updatedPosts[index].likes || 0) + likeValue;
-    setPosts(updatedPosts);
+    // 내가 수정할 부분
   };
 
   return (
     <div>
       <Navbars />
-
       <div className="main">
         <div className="user_profile">
           <img src="./images/profile.png" alt="사용자 프로필 사진" />

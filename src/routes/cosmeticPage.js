@@ -1,5 +1,7 @@
-import { Link, Route, Routes } from 'react-router-dom';
-function Cosmetic() {
+import { Link } from "react-router-dom";
+import ShowProducts from "../components/ShowProducts";
+
+function CosmeticLanking() {
   return (
     <div className="cosmetic_page">
       <div className="intro_bg">
@@ -9,11 +11,11 @@ function Cosmetic() {
             <img src="image/logo.png" className="logo-size"></img>
           </div>
 
-          <ul>  
+          <ul>
             <li>
               <Link to={`${process.env.PUBLIC_URL}/login`}>로그인</Link>
             </li>
-          
+
             <li>
               <Link to={`${process.env.PUBLIC_URL}/Signup`}>회원가입</Link>
             </li>
@@ -31,6 +33,7 @@ function Cosmetic() {
           </ul>
         </div>
         <div className="lineStyle"></div>
+        <ShowProducts skinType={"Oily"} />
       </div>
 
       <div className="ranking">
@@ -165,4 +168,4 @@ function mainRanking() {
   );
 }
 
-export default Cosmetic;
+export default CosmeticLanking;
