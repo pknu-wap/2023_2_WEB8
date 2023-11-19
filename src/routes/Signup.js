@@ -45,6 +45,7 @@ const Signup = () => {
       <h3>회원가입</h3>
       <label htmlFor="email">이메일:</label>
       <input
+        className="signup-input"
         type="email"
         id="email"
         name="email"
@@ -55,6 +56,7 @@ const Signup = () => {
 
       <label htmlFor="password">비밀번호:</label>
       <input
+        className="signup-input"
         type="password"
         id="password"
         name="password"
@@ -64,12 +66,14 @@ const Signup = () => {
       />
       <label htmlFor="username">사용자명:</label>
       <input
+        className="signup-input"
         type="text"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
       />
       <label htmlFor="skin-type">피부타입</label>
       <select
+        className="signup-select"
         name="skin-type"
         id="skin-type"
         onChange={(e) => setUserSkinType(e.target.value)}
@@ -84,7 +88,7 @@ const Signup = () => {
         <option value="민감성">민감성</option>
         <option value="모름">모름</option>
       </select>
-      <button>회원가입</button>
+      <button className="signup-button">회원가입</button>
     </form>
   );
 };

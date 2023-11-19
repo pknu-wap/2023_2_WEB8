@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
 import Navbars from "../components/Navbars.js";
+import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth.js";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
@@ -36,7 +37,7 @@ const Community = () => {
 
   return (
     <div>
-      <Navbars />
+      <Navbars2 />
       <div className="main">
         <div className="user_profile">
           <img src="./images/profile.png" alt="사용자 프로필 사진" />
