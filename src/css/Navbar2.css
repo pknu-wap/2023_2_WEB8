@@ -20,7 +20,8 @@
 .logo_img {
   width: 12%;
   height: auto;
-  padding: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   cursor: pointer;
 }
 
