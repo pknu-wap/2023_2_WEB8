@@ -4,6 +4,7 @@ import ShowProducts from "../components/ShowProducts";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
+import Navbars from "../components/Navbars";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
@@ -20,10 +21,6 @@ function MyPage() {
 
   return (
     <div>
-      <div>
-        <div>
-          <div>
-            <img alt="profile" src="/images/profile-user.png" />
           </div>
           <div>
             <div>

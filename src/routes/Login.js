@@ -7,6 +7,7 @@ import {
 import { auth } from "../firebase";
 import LogoutBtn from "../components/logoutBtn";
 import { useNavigate } from "react-router-dom";
+import "../css/Login.css";
 
 const RegistrationForm = () => {
   const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <input
         type="email"
@@ -55,7 +56,6 @@ const RegistrationForm = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <LogoutBtn />
     </div>
   );
 };
