@@ -1,28 +1,35 @@
-// Like.js
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
+import LikedFunc from "../functions/likeFunc";
 
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
-
-const Like = ({ likes, handleLike }) => {
+const Like = ({ postId, postLikes }) => {
   const [liked, setLiked] = useState(false);
-
+  const [likedNum, setLikedNum] = useState(postLikes);
   const toggleLike = () => {
     setLiked(!liked);
-    handleLike(liked ? -1 : 1); // 좋아요 취소하면 -1, 좋아요 누르면 1
+
+    LikedFunc(postId, !liked);
+
+    //setLiked가 비동기적으로 수행하기 때문에 그에 맞게 작성됨
+    if (!liked) setLikedNum((num) => num + 1);
+    else setLikedNum((num) => num - 1);
   };
 
   return (
-    <div className="heart" onClick={toggleLike}>
+    <div
+      className="heart"
+      onClick={() => {
+        toggleLike();
+      }}
+    >
       {liked ? (
         <FontAwesomeIcon icon={fasHeart} size="1.5x" color="red" />
       ) : (
         <FontAwesomeIcon icon={farHeart} size="1.5x" />
       )}
-      {likes !== undefined && likes !== null ? (
-        <span className="like-count">{liked ? likes + 1 : likes}</span> 
-      ) : null}
+      <span>{likedNum}</span>
     </div>
   );
 };

@@ -21,6 +21,8 @@ function MyPage() {
     return <div>Please log in.</div>;
   }
 
+  
+
   return (
     <div>
       <Navbars2 />
@@ -70,12 +72,12 @@ function MyPage() {
           )}
           {navButton === 1 && (
             <div>
-              <Bookmarks />
+              <Bookmarks skinType={currentUser.skinType} />
             </div>
           )}
           {navButton === 2 && (
             <div>
-              <ShowProducts />
+              <ShowProducts skinType={currentUser.skinType}/>
             </div>
           )}
         </div>
