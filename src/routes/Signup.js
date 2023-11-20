@@ -78,10 +78,10 @@ const Signup = () => {
             ? `선택한 피부 타입: ${userSkinType}`
             : "피부 타입을 선택하세요"}
         </option>
-        <option value="건성">건성</option>
-        <option value="지성">지성</option>
-        <option value="민감성">민감성</option>
-        <option value="모름">모름</option>
+        <option value="Dry">건성</option>
+        <option value="Oily">지성</option>
+        <option value="Sensitive">민감성</option>
+        <option value="Unset">모름</option>
       </select>
       <button>회원가입</button>
     </form>

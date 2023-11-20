@@ -2,10 +2,10 @@ import Product from "./Product";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
-function Bookmarks() {
+function Bookmarks(skinType) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetchData(setProducts, "Sensitive");
+    fetchData(setProducts, skinType);
   }, []);
 
   return (

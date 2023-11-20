@@ -1,4 +1,10 @@
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const createPostInFirestore = async (user, article) => {
@@ -8,13 +14,18 @@ const createPostInFirestore = async (user, article) => {
     const { uid, userName, skinType } = user;
     const { title, content } = article;
 
-    await addDoc(collection(db, "Posts"), {
-      uid: uid,
+    const docRef = await addDoc(collection(db, "Posts"), {
+      userid: uid,
       userName: userName,
       userSkinType: skinType,
       title: title,
       content: content,
       timestamp: serverTimestamp(),
+    });
+
+    const Ref = doc(db, "Posts", docRef.id);
+    await updateDoc(Ref, {
+      id: docRef.id,
     });
   } catch (error) {
     console.error("Error adding post data to firestore: ", error);
