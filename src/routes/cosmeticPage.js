@@ -33,7 +33,7 @@ function CosmeticLanking() {
           </ul>
         </div>
         <div className="lineStyle"></div>
-        <ShowProducts skinType={"Oily"} />
+        <ShowProducts skinType={"Combination"} />
       </div>
 
       <div className="ranking">
