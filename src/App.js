@@ -4,7 +4,7 @@ import Community from "./routes/community";
 import MyPage from "./routes/MyPage";
 import RegistrationForm from "./routes/Login";
 import Signup from "./routes/Signup";
-import Cosmetic from "./routes/cosmeticPage";
+import CosmeticLanking from "./routes/cosmeticPage";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         ></Route>
         <Route
           path={`${process.env.PUBLIC_URL}/main`}
-          element={<Cosmetic />}
+          element={<CosmeticLanking />}
         ></Route>
       </Routes>
     </BrowserRouter>

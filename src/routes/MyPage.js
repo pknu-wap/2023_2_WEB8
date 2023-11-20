@@ -19,6 +19,8 @@ function MyPage() {
     return <div>Please log in.</div>;
   }
 
+  
+
   return (
     <div>
           </div>
@@ -43,7 +45,7 @@ function MyPage() {
             내가 작성한 글
           </li>
           <li
-            className={navButton === 0 ? "active" : ""}
+            className={navButton === 1 ? "active" : ""}
             onClick={() => {
               setNavButton(1);
             }}
@@ -51,7 +53,7 @@ function MyPage() {
             즐겨찾기
           </li>
           <li
-            className={navButton === 0 ? "active" : ""}
+            className={navButton === 2 ? "active" : ""}
             onClick={() => {
               setNavButton(2);
             }}
@@ -67,12 +69,12 @@ function MyPage() {
         )}
         {navButton === 1 && (
           <div>
-            <Bookmarks />
+            <Bookmarks skinType={currentUser.skinType} />
           </div>
         )}
         {navButton === 2 && (
           <div>
-            <ShowProducts />
+            <ShowProducts skinType={currentUser.skinType} />
           </div>
         )}
       </div>

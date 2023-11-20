@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
@@ -6,6 +6,7 @@ import Navbars from "../components/Navbars.js";
 import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth.js";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
+import fetchPosts from "../functions/fetchPosts.js";
 
 const Community = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -22,16 +23,15 @@ const Community = () => {
     setPostContent("");
   };
 
+  useEffect(() => {
+    fetchPosts(setPosts);
+  }, []);
+  // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
+
   const handleSubmit = () => {
     const newPost = { title: postTitle, content: postContent };
     createPostInFirestore(currentUser, newPost); //포스트를 파이어베이스에 등록함
-    setPosts([newPost, ...posts]); // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
-
     closeModal();
-  };
-
-  const handleLike = (index, likeValue) => {
-    // 내가 수정할 부분
   };
 
   return (
@@ -46,21 +46,22 @@ const Community = () => {
         </div>
 
         <div className="post_list">
-          {posts.map((post, index) => (
-            <div key={index} className="post_summary">
-              <div className="post_title_sum">{post.title}</div>
-              <div className="user_info">닉네임 날짜</div>
-              <div className="post_cont_sum">
-                {post.content.length > 200
-                  ? post.content.substring(0, 200) + "..."
-                  : post.content}
+          {posts.map((post) => {
+            return (
+              <div key={post.id} className="post_summary">
+                <div className="post_title_sum">{post.title}</div>
+                <div className="user_info">{post.userName}</div>
+                <div>{post.timestamp}</div>
+                <div className="post_cont_sum">
+                  {post.content.length > 200
+                    ? post.content.substring(0, 200) + "..."
+                    : post.content}
+                </div>
+                <div className="post_skin">{post.userSkinType}</div>
+                <Like postId={post.id} postLikes={post.likes} />
               </div>
-              <Like
-                likes={post.likes}
-                handleLike={(likeValue) => handleLike(index, likeValue)}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div

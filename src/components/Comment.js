@@ -1,12 +1,12 @@
 // Comment.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Comment = ({ comments, addComment }) => {
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
 
   const handleCommentSubmit = () => {
     addComment(newComment);
-    setNewComment('');
+    setNewComment("");
   };
 
   return (
