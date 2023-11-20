@@ -1,5 +1,5 @@
 import Article from "./Article";
-import styled from "styled-components";
+import "../css/List.css";
 
 //임의의 데이터
 const articles = [
@@ -21,12 +21,11 @@ const articles = [
 //더보기 만들기
 function List({ title }) {
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className="list-container">
+      <h3 className="list-title">{title}</h3>
       {articles.map((article) => {
         return (
-          <div key={article.id}>
-            <hr></hr>
+          <div key={article.id} className="article-container">
             <Article
               key={article.id}
               title={article.title}

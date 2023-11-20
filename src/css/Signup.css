@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
 
 :root {
   /* color */
@@ -12,10 +12,22 @@
 }
 
 * {
-  font-family: "Rubik";
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-form,
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .signup-form {
   max-width: 400px;
   margin: 0 auto;
@@ -23,32 +35,28 @@ form,
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.5s ease-in-out;
 }
 
-h1,
 .signup-form h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-h3,
 .signup-form h3 {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-label,
 .signup-form label {
   display: block;
   margin-bottom: 8px;
 }
 
-input,
-select,
-.signup-form input,
-.signup-form select {
+.signup-input,
+.signup-select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -57,57 +65,14 @@ select,
   border-radius: 5px;
 }
 
-select,
-.signup-form select {
+.signup-select {
   position: relative;
   appearance: none;
   background-color: white;
   cursor: pointer;
 }
 
-/* 드롭다운 화살표 스타일링 */
-select::after,
-.signup-form select::after {
-  content: "\25BC"; /* 화살표(▼) 유니코드 */
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  pointer-events: none; /* 드롭다운 버튼을 클릭 가능하게 만들기 위해 이벤트를 무시함 */
-}
-
-/* 드롭다운 옵션 스타일링 */
-select option,
-.signup-form select option {
-  background-color: white;
-}
-
-/* 드롭다운 애니메이션 */
-select:focus,
-.signup-form select:focus {
-  outline: none;
-  box-shadow: 0 0 5px #4caf50;
-  border-color: #4caf50;
-}
-
-select:focus::after,
-.signup-form select:focus::after {
-  content: "\25B2"; /* 열린 상태에서는 화살표를 위로 변경(▲) */
-}
-
-/* 드롭다운 옵션 애니메이션 */
-select option,
-.signup-form select option {
-  transition: background-color 0.3s;
-}
-
-select option:hover,
-.signup-form select option:hover {
-  background-color: #f0f0f0;
-}
-
-button,
-.signup-form button {
+.signup-button {
   width: 100%;
   padding: 10px;
   background-color: var(--main-color1);
@@ -117,7 +82,6 @@ button,
   cursor: pointer;
 }
 
-button:hover,
-.signup-form button:hover {
-  background-color: var(--main-color1);
+.signup-button:hover {
+  background-color: var(--main-color2);
 }

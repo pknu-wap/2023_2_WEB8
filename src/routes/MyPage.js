@@ -5,6 +5,8 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
 import Navbars from "../components/Navbars";
+import Navbars2 from "../components/Navbars2";
+import "../css/MyPage.css";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
@@ -23,60 +25,62 @@ function MyPage() {
 
   return (
     <div>
-          </div>
-          <div>
-            <div>
-              <h2>안녕하세요. {currentUser.userName}님!</h2>
-            </div>
-            <div>
-              <h2>피부타입 : {currentUser.skinType}</h2>
-            </div>
-          </div>
+      <Navbars2 />
+      <div className="user-info">
+        <div>
+          <h2>안녕하세요. {currentUser.userName}님!</h2>
+        </div>
+        <div>
+          <h2>피부타입 : {currentUser.skinType}</h2>
         </div>
       </div>
-      <div>
-        <ul>
-          <li
-            className={navButton === 0 ? "active" : ""}
-            onClick={() => {
-              setNavButton(0);
-            }}
-          >
-            내가 작성한 글
-          </li>
-          <li
-            className={navButton === 1 ? "active" : ""}
-            onClick={() => {
-              setNavButton(1);
-            }}
-          >
-            즐겨찾기
-          </li>
-          <li
-            className={navButton === 2 ? "active" : ""}
-            onClick={() => {
-              setNavButton(2);
-            }}
-          >
-            사용 제품 기록
-          </li>
-        </ul>
-        {navButton === 0 && (
-          <div>
-            <List title="Posts" />
-            <List title="comments" />
-          </div>
-        )}
-        {navButton === 1 && (
-          <div>
-            <Bookmarks skinType={currentUser.skinType} />
-          </div>
-        )}
-        {navButton === 2 && (
-          <div>
-            <ShowProducts skinType={currentUser.skinType} />
-          </div>
-        )}
+      <div className="dashboard-container">
+        <div className="dashboard-nav">
+          <ul>
+            <li
+              className={navButton === 0 ? "active" : ""}
+              onClick={() => {
+                setNavButton(0);
+              }}
+            >
+              내가 작성한 글
+            </li>
+            <li
+              className={navButton === 1 ? "active" : ""}
+              onClick={() => {
+                setNavButton(1);
+              }}
+            >
+              즐겨찾기
+            </li>
+            <li
+              className={navButton === 2 ? "active" : ""}
+              onClick={() => {
+                setNavButton(2);
+              }}
+            >
+              사용 제품 기록
+            </li>
+          </ul>
+        </div>
+        <div className="dashboard-content">
+          {navButton === 0 && (
+            <div>
+              <List title="Posts" />
+              <List title="Comments" />
+            </div>
+          )}
+          {navButton === 1 && (
+            <div>
+              <Bookmarks skinType={currentUser.skinType} />
+            </div>
+          )}
+          {navButton === 2 && (
+            <div>
+              <ShowProducts skinType={currentUser.skinType}/>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
