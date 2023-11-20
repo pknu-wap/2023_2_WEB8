@@ -25,9 +25,9 @@ const Like = ({ postId, postLikes }) => {
       }}
     >
       {liked ? (
-        <FontAwesomeIcon icon={fasHeart} size="1.5x" color="red" />
+        <FontAwesomeIcon icon={fasHeart} size="sm" color="red" />
       ) : (
-        <FontAwesomeIcon icon={farHeart} size="1.5x" />
+        <FontAwesomeIcon icon={farHeart} size="sm" />
       )}
       <span>{likedNum}</span>
     </div>

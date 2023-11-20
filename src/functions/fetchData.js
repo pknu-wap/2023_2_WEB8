@@ -22,10 +22,9 @@ const fetchData = async (setProducts, { skinType, userUid }) => {
       // const imageURL = await getDownloadURL(
       //   ref(storage, `products/${product.id + ".jpg"}`)
       // );
-      console.log(doc.data());
 
       productData.push({
-        Id: product.Id,
+        id: product.id,
         Brand: product.Brand,
         Name: product.Name,
         Label: product.Label,

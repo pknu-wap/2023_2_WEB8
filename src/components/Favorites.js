@@ -2,10 +2,12 @@ import Product from "./Product";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
 
-function Bookmarks(skinType) {
+function Favorites({ userInfo }) {
   const [products, setProducts] = useState([]);
+  const skinType = userInfo.skinType;
+
   useEffect(() => {
-    fetchData(setProducts, skinType);
+    fetchData(setProducts, { skinType });
   }, []);
 
   return (
@@ -20,6 +22,7 @@ function Bookmarks(skinType) {
               brand={product.Brand}
               label={product.Label}
               rank={product.Rank}
+              uid={userInfo.uid}
             />
           </div>
         );
@@ -28,4 +31,4 @@ function Bookmarks(skinType) {
   );
 }
 
-export default Bookmarks;
+export default Favorites;

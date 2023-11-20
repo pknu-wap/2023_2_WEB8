@@ -1,5 +1,5 @@
 import List from "../components/List";
-import Bookmarks from "../components/Bookmarks";
+import Favorites from "../components/Favorites";
 import ShowProducts from "../components/ShowProducts";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,9 +20,6 @@ function MyPage() {
   if (!currentUser) {
     return <div>Please log in.</div>;
   }
-
-  
-
   return (
     <div>
       <Navbars2 />
@@ -72,12 +69,12 @@ function MyPage() {
           )}
           {navButton === 1 && (
             <div>
-              <Bookmarks skinType={currentUser.skinType} />
+              <Favorites userInfo={currentUser} />
             </div>
           )}
           {navButton === 2 && (
             <div>
-              <ShowProducts skinType={currentUser.skinType}/>
+              <ShowProducts skinType={currentUser.skinType} />
             </div>
           )}
         </div>
