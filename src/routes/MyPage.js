@@ -15,11 +15,9 @@ function MyPage() {
 
   console.log(currentUser);
   if (currentUser == null) {
-    return <div>Loading...</div>;
-  }
-  if (!currentUser) {
     return <div>Please log in.</div>;
   }
+
   return (
     <div>
       <Navbars2 />
