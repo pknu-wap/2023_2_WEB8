@@ -1,11 +1,10 @@
 import List from "../components/List";
 import Favorites from "../components/Favorites";
 import ShowProducts from "../components/ShowProducts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
 import Navbars2 from "../components/Navbars2";
-import EditUserInfo from "./EditUserInfo";
 import "../css/MyPage.css";
 import { Link } from "react-router-dom";
 
@@ -63,8 +62,8 @@ function MyPage() {
         <div className="dashboard-content">
           {navButton === 0 && (
             <div>
-              <List title="Posts" />
-              <List title="Comments" />
+              <List title="Posts" userInfo={currentUser} />
+              <List title="Comments" userInfo={currentUser} />
             </div>
           )}
           {navButton === 1 && (

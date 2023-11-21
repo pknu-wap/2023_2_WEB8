@@ -13,7 +13,6 @@ const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
   const [isDetailModalVisible, setDetailModalVisible] = useState(false);
 
-  const [isModalVisible, setModalVisible] = useState(false);
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
