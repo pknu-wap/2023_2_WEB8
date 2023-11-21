@@ -7,11 +7,7 @@ import useAuth from "../functions/useAuth";
 import Navbars2 from "../components/Navbars2";
 import EditUserInfo from "./EditUserInfo";
 import "../css/MyPage.css";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
-import LogoutBtn from "../components/logoutBtn";
->>>>>>> 5a4d81fcab32606f54341378ec23af2a65307c24
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
