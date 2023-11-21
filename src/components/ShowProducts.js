@@ -6,11 +6,11 @@ function ShowProducts(props) {
   const [products, setProducts] = useState([]);
   const { skinType, userUid } = props;
   useEffect(() => {
-    if (userUid != undefined) fetchData(setProducts, { userUid: userUid });
-    else if (skinType != undefined)
+    if (userUid !== undefined) fetchData(setProducts, { userUid: userUid });
+    else if (skinType !== undefined)
       fetchData(setProducts, { skinType: skinType });
     else console.log("error in ShowProducts");
-  }, []);
+  }, [skinType, userUid]);
 
   return (
     <div>

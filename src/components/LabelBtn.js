@@ -1,24 +1,17 @@
 import { useState } from "react";
-
-import {
-  getDoc,
-  doc,
-  setDoc,
-  updateDoc,
-  query,
-  collection,
-  where,
-} from "firebase/firestore";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import useAuth from "../functions/useAuth";
 
-const LabelBtn = ({ userId, productName }) => {
+const LabelBtn = ({ productName }) => {
   //false부분을 현재 사용자가 즐찾했는지에 따라
   //2. 데이터 필드를 통해 마이페이지 연결
+  const user = useAuth();
   const [isFavorited, setIsFavorited] = useState(false);
 
   const handleFavorite = async () => {
     try {
-      const userRef = doc(db, "Users", userId);
+      const userRef = doc(db, "Users", user.uid);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {

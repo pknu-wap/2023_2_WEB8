@@ -5,7 +5,6 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import LogoutBtn from "../components/logoutBtn";
 import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
 
