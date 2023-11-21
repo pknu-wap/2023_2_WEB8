@@ -22,18 +22,26 @@ const Comment = ({ postId }) => {
           </li>
         ))}
       </ul>
-      <div>
+      <form>
         <input
           type="text"
           placeholder="댓글 작성..."
           value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
+          onChange={(e) => {
+            setNewComment(e.target.value);
+          }}
           className="comment-input"
         />
-        <button onClick={handleAddComment} className="comment-submit">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleAddComment();
+          }}
+          className="comment-submit"
+        >
           ↑
         </button>
-      </div>
+      </form>
     </div>
   );
 };
