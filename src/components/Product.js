@@ -11,8 +11,8 @@ function Product({ id, name, price, rank, uid }) {
       </div>
       <div className="product-info">
         <div className="product-name">{name}</div>
-        <div className="product-price">{price}</div>
-        <div className="product-rank">{rank}</div>
+        <div className="product-price">{price}$</div>
+        <div className="product-rank">{rank}점</div>
       </div>
 
       <LabelBtn productName={name} userId={uid} />
