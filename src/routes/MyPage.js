@@ -1,23 +1,20 @@
 import List from "../components/List";
 import Favorites from "../components/Favorites";
 import ShowProducts from "../components/ShowProducts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
 import Navbars from "../components/Navbars";
 import Navbars2 from "../components/Navbars2";
+import EditUserInfo from "./EditUserInfo";
 import "../css/MyPage.css";
+import { Link } from "react-router-dom";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
-
   const currentUser = useAuth();
 
-  console.log(currentUser);
   if (currentUser == null) {
-    return <div>Loading...</div>;
-  }
-  if (!currentUser) {
     return <div>Please log in.</div>;
   }
   return (
@@ -57,6 +54,9 @@ function MyPage() {
               }}
             >
               사용 제품 기록
+            </li>
+            <li>
+              <Link to={`/Mypage/editInfo`}>회원 정보 수정</Link>
             </li>
           </ul>
         </div>
