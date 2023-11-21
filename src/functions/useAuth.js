@@ -35,7 +35,7 @@ const useAuth = () => {
         }
       } else {
         setUser(null);
-        console.log("사용자가 로그아웃했씁니다.");
+        console.log("사용자가 로그아웃했습니다.");
       }
     });
 

@@ -4,9 +4,9 @@ import ShowProducts from "../components/ShowProducts";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
-import Navbars from "../components/Navbars";
 import Navbars2 from "../components/Navbars2";
 import "../css/MyPage.css";
+import LogoutBtn from "../components/logoutBtn";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
