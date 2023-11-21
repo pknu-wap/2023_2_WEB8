@@ -40,24 +40,46 @@ const RegistrationForm = () => {
       });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if (e.target.name === "email") {
+        // 엔터 키를 누른 입력 필드가 이메일 필드인 경우
+        document.getElementById("passwordInput").focus();
+      } else if (e.target.name === "password") {
+        // 엔터 키를 누른 입력 필드가 비밀번호 필드인 경우
+        handleLogin();
+      } else if (e.target.name === "loginButton") {
+        // 엔터 키를 누른 요소가 로그인 버튼인 경우
+        handleLogin();
+      }
+    }
+  };
+
   return (
     <div className="login-container">
       <h2>Login</h2>
       <input
         type="email"
+        id="emailInput"
+        name="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <input
         type="password"
+        id="passwordInput"
+        name="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button id="loginButton" onClick={handleLogin} onKeyDown={handleKeyDown}>
+        Login
+      </button>
     </div>
   );
 };
-
 export default RegistrationForm;
