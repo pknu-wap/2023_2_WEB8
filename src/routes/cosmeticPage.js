@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import ShowProducts from "../components/ShowProducts";
+import { useEffect, useState } from "react";
+import useAuth from "../functions/useAuth";
 
 function CosmeticLanking() {
+  const user = useAuth();
+  const [userSkinType, setUserSkinType] = useState("");
+  useEffect(() => {
+    if (user) {
+      setUserSkinType(user.skinType);
+    }
+  }, [user]);
+
+  const handleSort = (e) => {
+    setUserSkinType(e.target.value);
+  };
+
   return (
     <div className="cosmetic_page">
       <div className="intro_bg">
@@ -33,7 +47,28 @@ function CosmeticLanking() {
           </ul>
         </div>
         <div className="lineStyle"></div>
-        <ShowProducts skinType={"Combination"} />
+        <button
+          onClick={handleSort}
+          value="Dry"
+          disabled={"Dry" === userSkinType}
+        >
+          건성
+        </button>
+        <button
+          onClick={handleSort}
+          value="Oily"
+          disabled={"Oily" === userSkinType}
+        >
+          지성
+        </button>
+        <button
+          onClick={handleSort}
+          value="Sensitive"
+          disabled={"Sensitive" === userSkinType}
+        >
+          민감성
+        </button>
+        <ShowProducts skinType={userSkinType} />
       </div>
 
       <div className="ranking">
