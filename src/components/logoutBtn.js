@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import "../css/Navbar2.css";
 
 const LogoutBtn = () => {
   const handleLogout = () => {
@@ -13,7 +14,7 @@ const LogoutBtn = () => {
   };
 
   return (
-    <div>
+    <div className="logout_button">
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

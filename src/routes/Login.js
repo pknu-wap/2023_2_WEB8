@@ -30,7 +30,7 @@ const RegistrationForm = () => {
             console.error("로그인 상태 지속성 설정 실패:", error);
           });
 
-        navigate(`${process.env.PUBLIC_URL}/main`);
+        navigate(-1);
       })
       .catch((error) => {
         const errorCode = error.code;
