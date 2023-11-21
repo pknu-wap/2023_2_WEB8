@@ -47,13 +47,25 @@ function CosmeticLanking() {
           </ul>
         </div>
         <div className="lineStyle"></div>
-        <button onClick={handleSort} value="Dry">
+        <button
+          onClick={handleSort}
+          value="Dry"
+          disabled={"Dry" === userSkinType}
+        >
           건성
         </button>
-        <button onClick={handleSort} value="Oily">
+        <button
+          onClick={handleSort}
+          value="Oily"
+          disabled={"Oily" === userSkinType}
+        >
           지성
         </button>
-        <button onClick={handleSort} value="Sensitive">
+        <button
+          onClick={handleSort}
+          value="Sensitive"
+          disabled={"Sensitive" === userSkinType}
+        >
           민감성
         </button>
         <ShowProducts skinType={userSkinType} />
