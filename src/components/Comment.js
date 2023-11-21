@@ -1,36 +1,38 @@
-// Comment.js
 import React, { useState } from "react";
+import "../css/Comment.css";
 
-const Comment = ({ comments, addComment }) => {
+const Comment = ({ postId }) => {
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
-  const handleCommentSubmit = () => {
-    addComment(newComment);
-    setNewComment("");
+  const handleAddComment = () => {
+    if (newComment.trim() !== "") {
+      setComments((prevComments) => [...prevComments, newComment]);
+      setNewComment("");
+    }
   };
 
   return (
-    <div>
-      {comments && comments.length > 0 ? (
-        <div>
-          <h3>댓글</h3>
-          {comments.map((comment, index) => (
-            <div key={index}>
-              <p>{comment}</p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>댓글이 없습니다.</p>
-      )}
-
+    <div className="comment-container">
+      <h4 className="comment-header">댓글</h4>
+      <ul className="comment-list">
+        {comments.map((comment, index) => (
+          <li key={index} className="comment-item">
+            {comment}
+          </li>
+        ))}
+      </ul>
       <div>
-        <textarea
-          placeholder="댓글을 입력하세요."
+        <input
+          type="text"
+          placeholder="댓글 작성..."
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
+          className="comment-input"
         />
-        <button onClick={handleCommentSubmit}>댓글 등록</button>
+        <button onClick={handleAddComment} className="comment-submit">
+          ↑
+        </button>
       </div>
     </div>
   );
