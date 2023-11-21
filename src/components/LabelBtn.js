@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   getDoc,
   doc,
@@ -42,7 +43,7 @@ const LabelBtn = ({ userId, productName }) => {
   };
   return (
     <div>
-      <button onClick={handleFavorite}>
+      <button className="label-btn" onClick={handleFavorite}>
         {isFavorited ? "Unfavorite" : "Favorite"}
       </button>
     </div>

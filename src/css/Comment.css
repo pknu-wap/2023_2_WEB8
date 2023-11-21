@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
+
+:root {
+  /* color */
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
+
+  /* size */
+  --padding: 12px;
+  --radious: 10px;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-container {
+  margin: 10px 0;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.comment-header {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.comment-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  padding: 8px 0;
+}
+
+.comment-input {
+  border: none;
+  resize: none;
+  padding: 8px;
+  width: 92%;
+}
+
+.comment-submit {
+  margin-left: 5px;
+  background-color: var(--main-color1);
+  border-radius: 13px;
+  border: none;
+  width: 7%;
+  height: 20%;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  color: white;
+}
+
+.comment-submit:hover {
+  opacity: 0.8;
+}

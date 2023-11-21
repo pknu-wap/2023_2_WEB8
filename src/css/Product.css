@@ -1,0 +1,65 @@
+/* Product.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
+
+/* Product.css */
+
+.product-container {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  text-align: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-info {
+  width: 100%;
+}
+
+.product-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.product-price {
+  color: #007bff; /* Blue color for price */
+}
+
+.product-rank {
+  color: #28a745; /* Green color for rank */
+}
+
+/* Add more styles as needed */
+
+/* LabelBtn.css */
+
+.label-btn-container {
+  position: relative;
+  display: inline-block; /* 부모 요소를 인라인 블록 요소로 설정 */
+}
+
+.label-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, #9ed2be, 0.5);
+  color: black;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.label-btn:hover {
+  background-color: #7eaa92;
+}

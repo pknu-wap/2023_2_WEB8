@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
 
 :root {
   /* color */
@@ -15,6 +15,7 @@
   padding: 2px;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .show {
@@ -83,7 +84,7 @@ header {
 }
 
 .main .user_profile:hover img {
-  transform: scale(1.2); /* 마우스 호버시 이미지 확대 효과 */
+  transform: scale(1.2);
 }
 
 .main .user_profile .write_post_btn {
@@ -95,7 +96,7 @@ header {
   transition: color 0.3s ease-in-out;
 }
 .main .user_profile:hover .write_post_btn {
-  color: var(--main-color1); /* 마우스 호버시 텍스트 색상 변경 */
+  color: var(--main-color1);
 }
 
 .post_summary {
@@ -108,10 +109,26 @@ header {
 }
 
 .post_summary:hover {
-  background-color: rgba(255, 255, 255, 0.7); /* 마우스 호버시 배경색 변경 */
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.post_cont_sum {
+  margin: 8px 0;
 }
 
 /* Modal */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -129,7 +146,7 @@ header {
   border-radius: var(--radious);
   box-shadow: 0 0 20px var(--main-color1);
   max-width: 80%;
-  max-height: 80%; /* 모달의 최대 높이 지정 */
+  max-height: 80%;
 }
 
 .modal-header {

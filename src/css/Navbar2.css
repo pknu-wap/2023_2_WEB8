@@ -38,12 +38,12 @@
 
 .nav_list {
   display: flex;
-  gap: 10px;
 }
 
 .nav_button {
   border: none;
   padding: 0px 10px;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   text-decoration: underline;
   transition: background-position 0.5s;
@@ -54,4 +54,43 @@
 
   background: linear-gradient(to top, var(--main-color1) 30%, transparent 25%);
   border-radius: 0;
+}
+
+.sign_button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.4s ease-in-out;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.sign_button:hover {
+  transform: scale(1.1);
+}
+
+.login_button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 13px;
+
+  transition: transform 0.4s ease-in-out;
+}
+
+.login_button:hover {
+  transform: scale(1.1);
+}
+
+.logout_button button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.logout_button:hover {
+  transform: scale(1.05);
 }

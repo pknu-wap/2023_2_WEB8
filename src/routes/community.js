@@ -2,27 +2,22 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
-import Navbars from "../components/Navbars.js";
 import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth.js";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
+import PostModal from "../components/PostModal.js";
 
 const Community = () => {
+  const [isCreateModalVisible, setCreateModalVisible] = useState(false);
+  const [isDetailModalVisible, setDetailModalVisible] = useState(false);
+
   const [isModalVisible, setModalVisible] = useState(false);
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
   const currentUser = useAuth();
-
-  const openModal = () => setModalVisible(true);
-  const closeModal = () => {
-    setModalVisible(false);
-    // 모달 닫을 때 제목과 내용 초기화
-    setPostTitle("");
-    setPostContent("");
-  };
 
   useEffect(() => {
     fetchPosts(setPosts);
@@ -32,7 +27,28 @@ const Community = () => {
   const handleSubmit = () => {
     const newPost = { title: postTitle, content: postContent };
     createPostInFirestore(currentUser, newPost); //포스트를 파이어베이스에 등록함
-    closeModal();
+
+    setCreateModalVisible(false);
+    setPostTitle("");
+    setPostContent("");
+  };
+
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  // 게시물 클릭 시 해당 게시물의 상세 내용을 보여주는 함수
+  const handlePostClick = (post) => {
+    setSelectedPost(post);
+    setDetailModalVisible(true); // 게시물 클릭 시 모달 열기
+  };
+
+  const openCreateModal = () => setCreateModalVisible(true);
+  const closeModal = () => {
+    setSelectedPost(null);
+    // 두 모달 모두 닫기
+    setCreateModalVisible(false);
+    setDetailModalVisible(false);
+    setPostTitle("");
+    setPostContent("");
   };
 
   return (
@@ -41,7 +57,7 @@ const Community = () => {
       <div className="main">
         <div className="user_profile">
           <img src="./images/profile.png" alt="사용자 프로필 사진" />
-          <button className="write_post_btn" onClick={openModal}>
+          <button className="write_post_btn" onClick={openCreateModal}>
             게시물 작성하기
           </button>
         </div>
@@ -49,7 +65,11 @@ const Community = () => {
         <div className="post_list">
           {posts.map((post) => {
             return (
-              <div key={post.id} className="post_summary">
+              <div
+                key={post.id}
+                className="post_summary"
+                onClick={() => handlePostClick(post)}
+              >
                 <div className="post_title_sum">{post.title}</div>
                 <div className="user_info">{post.userName}</div>
                 <div>{post.timestamp}</div>
@@ -65,9 +85,15 @@ const Community = () => {
           })}
         </div>
 
+        <PostModal
+          post={selectedPost}
+          onClose={closeModal}
+          isVisible={isDetailModalVisible}
+        />
+
         <div
           className="modal"
-          style={{ display: isModalVisible ? "block" : "none" }}
+          style={{ display: isCreateModalVisible ? "block" : "none" }}
         >
           <div className="modal-content">
             <div className="modal-header">
