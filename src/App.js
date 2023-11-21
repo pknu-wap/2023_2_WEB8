@@ -5,6 +5,7 @@ import MyPage from "./routes/MyPage";
 import RegistrationForm from "./routes/Login";
 import Signup from "./routes/Signup";
 import CosmeticLanking from "./routes/cosmeticPage";
+import EditUserInfo from "./routes/EditUserInfo";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <Route
           path={`${process.env.PUBLIC_URL}/login`}
           element={<RegistrationForm />}
+        ></Route>
+        <Route
+          path={`${process.env.PUBLIC_URL}/mypage/editInfo`}
+          element={<EditUserInfo />}
         ></Route>
         <Route
           path={`${process.env.PUBLIC_URL}/mypage`}

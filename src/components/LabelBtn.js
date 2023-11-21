@@ -34,6 +34,7 @@ const LabelBtn = ({ userId, productName }) => {
         }
 
         await updateDoc(userRef, { favorites: userFavorites });
+        //setState가 맨 마지막에 실행되도록
         setIsFavorited(!isFavorited);
       }
     } catch (error) {

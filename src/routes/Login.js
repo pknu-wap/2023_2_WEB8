@@ -14,7 +14,8 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -56,6 +57,26 @@ const RegistrationForm = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <div className="login-container" onSubmit={handleLogin}>
+      <form>
+        <h2>Login</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button>Login</button>
+      </form>
+      <LogoutBtn />
+=======
     <div className="login-container">
       <h2>Login</h2>
       <input
@@ -79,6 +100,7 @@ const RegistrationForm = () => {
       <button id="loginButton" onClick={handleLogin} onKeyDown={handleKeyDown}>
         Login
       </button>
+>>>>>>> 5a4d81fcab32606f54341378ec23af2a65307c24
     </div>
   );
 };
