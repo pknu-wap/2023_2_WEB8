@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import useAuth from "../functions/useAuth";
 
-const LabelBtn = ({ productName }) => {
+const LabelBtn = (props) => {
   //false부분을 현재 사용자가 즐찾했는지에 따라
   //2. 데이터 필드를 통해 마이페이지 연결
-  const user = useAuth();
+  const { productName, userId, productId } = props;
   const [isFavorited, setIsFavorited] = useState(false);
 
   const handleFavorite = async () => {
+    console.log("userId", userId);
     try {
-      const userRef = doc(db, "Users", user.uid);
+      //User Data Field Update
+      const userRef = doc(db, "Users", userId);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {
@@ -27,6 +28,25 @@ const LabelBtn = ({ productName }) => {
         }
 
         await updateDoc(userRef, { favorites: userFavorites });
+
+        //Product Data Field Update
+        const productRef = doc(db, "Products", productId);
+        const productDoc = await getDoc(productRef);
+
+        if (productDoc.exists()) {
+          const productFavorites = productDoc.data().favorites || [];
+
+          if (!isFavorited) {
+            productFavorites.push(userId);
+          } else {
+            const index = productFavorites.indexOf(userId);
+            if (index > -1) {
+              productFavorites.splice(index, 1);
+            }
+          }
+
+          await updateDoc(productRef, { favorites: productFavorites });
+        }
         //setState가 맨 마지막에 실행되도록
         setIsFavorited(!isFavorited);
       }

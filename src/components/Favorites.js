@@ -14,9 +14,9 @@ function Favorites({ userInfo }) {
     <div>
       {products.map((product) => {
         return (
-          <div key={product.Id}>
+          <div key={product.id}>
             <Product
-              id={product.Id}
+              id={product.id}
               name={product.Name}
               price={product.Price}
               brand={product.Brand}

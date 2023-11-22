@@ -15,7 +15,7 @@ function Product({ id, name, price, rank, uid }) {
         <div className="product-rank">{rank}점</div>
       </div>
 
-      <LabelBtn productName={name} userId={uid} />
+      <LabelBtn productId={id} productName={name} userId={uid} />
     </div>
   );
 }

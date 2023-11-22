@@ -6,6 +6,12 @@ import useAuth from "../functions/useAuth";
 function CosmeticLanking() {
   const user = useAuth();
   const [userSkinType, setUserSkinType] = useState("");
+  const [order, setOrder] = useState("popular");
+
+  const handleSelectChange = (event) => {
+    setOrder(event.target.value);
+  };
+
   useEffect(() => {
     if (user) {
       setUserSkinType(user.skinType);
@@ -21,7 +27,6 @@ function CosmeticLanking() {
       <div className="intro_bg">
         <div className="header">
           <div className="logo">
-            {/* 로고 */}
             <img src="image/logo.png" className="logo-size"></img>
           </div>
 
@@ -68,7 +73,13 @@ function CosmeticLanking() {
         >
           민감성
         </button>
-        <ShowProducts skinType={userSkinType} />
+        <select value={order} onChange={handleSelectChange}>
+          <option value="Rank">별점순</option>
+          <option value="favorites">인기순</option>
+          <option value="lowest-price">낮은 가격순</option>
+          <option value="highest-price">높은 가격순</option>
+        </select>
+        <ShowProducts skinType={userSkinType} orderBy={order} />
       </div>
 
       <div className="ranking">
