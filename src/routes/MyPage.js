@@ -55,7 +55,9 @@ function MyPage() {
               사용 제품 기록
             </li>
             <li>
-              <Link to={`/Mypage/editInfo`}>회원 정보 수정</Link>
+              <Link to={`/Mypage/editInfo`} className="Link-style">
+                회원 정보 수정
+              </Link>
             </li>
           </ul>
         </div>
