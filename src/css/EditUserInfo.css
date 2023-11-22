@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
+
+:root {
+  /* color */
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
+
+  /* size */
+  --padding: 12px;
+  --radius: 10px;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-profile {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.user-profile h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.user-profile h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: var(--padding);
+}
+
+.input-field {
+  border: none;
+  pointer-events: none;
+}
+
+.select-field {
+  width: 100%;
+  padding: var(--padding);
+  margin-bottom: var(--padding);
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+}
+
+.select-field {
+  position: relative;
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn-confirm,
+.btn-cancel {
+  width: 100%;
+  padding: var(--padding);
+  background-color: var(--main-color1);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn-confirm:hover {
+  background-color: var(--main-color2);
+}
+
+.btn-cancel {
+  background-color: #f44336;
+}
+
+.btn-cancel:hover {
+  background-color: #d32f2f;
+}

@@ -105,3 +105,13 @@ h2 {
   flex: 1;
   margin-left: 20px;
 }
+
+.Link-style {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Link-style:hover {
+  text-decoration: none;
+  color: inherit;
+}

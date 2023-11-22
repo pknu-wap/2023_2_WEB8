@@ -4,6 +4,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useSearchParams } from "react-router-dom";
 import useAuth from "../functions/useAuth";
 import { useNavigate } from "react-router-dom";
+import "../css/EditUserInfo.css";
 
 const EditUserInfo = () => {
   const [uid, setUid] = useState("");
@@ -49,23 +50,29 @@ const EditUserInfo = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="user-profile">
+      <div className="form-group">
         <label>
           Name:
-          <input type="text" value={userName} readOnly />
+          <input
+            type="text"
+            value={userName}
+            readOnly
+            className="input-field"
+          />
         </label>
       </div>
-      <div>
+      <div className="form-group">
         <label>
           Email:
-          <input type="text" value={email} readOnly />
+          <input type="text" value={email} readOnly className="input-field" />
         </label>
       </div>
       <select
         name="skin-type"
         id="skin-type"
         onChange={(e) => setSkinType(e.target.value)}
+        className="select-field"
       >
         <option value="" disabled={skinType !== ""}>
           {skinType
@@ -77,8 +84,10 @@ const EditUserInfo = () => {
         <option value="Sensitive">민감성</option>
         <option value="Unset">모름</option>
       </select>
-      <button onClick={handleEdit}>확인</button>
-      <button>취소</button>
+      <button onClick={handleEdit} className="btn-confirm">
+        확인
+      </button>
+      <button className="btn-cancel">취소</button>
     </div>
   );
 };
