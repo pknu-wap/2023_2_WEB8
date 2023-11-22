@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import ShowProducts from "../components/ShowProducts";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import useAuth from "../functions/useAuth";
 
 function CosmeticLanking() {
   const user = useAuth();
   const [userSkinType, setUserSkinType] = useState("");
+  const [userId, setUserId] = useState("");
   const [order, setOrder] = useState("popular");
-
   const handleSelectChange = (event) => {
     setOrder(event.target.value);
   };
@@ -15,6 +15,7 @@ function CosmeticLanking() {
   useEffect(() => {
     if (user) {
       setUserSkinType(user.skinType);
+      setUserId(user.uid);
     }
   }, [user]);
 
@@ -79,7 +80,11 @@ function CosmeticLanking() {
           <option value="lowest-price">낮은 가격순</option>
           <option value="highest-price">높은 가격순</option>
         </select>
-        <ShowProducts skinType={userSkinType} orderBy={order} />
+        <ShowProducts
+          skinType={userSkinType}
+          orderBy={order}
+          userUid={userId}
+        />
       </div>
 
       <div className="ranking">
