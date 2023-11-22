@@ -4,21 +4,24 @@ import fetchData from "../functions/fetchData";
 
 function ShowProducts(props) {
   const [products, setProducts] = useState([]);
-  const { skinType, userUid } = props;
+  const { skinType, userUid, orderBy } = props;
+  console.log("skin: ", skinType);
+  console.log("order: ", orderBy);
+
   useEffect(() => {
     if (userUid !== undefined) fetchData(setProducts, { userUid: userUid });
     else if (skinType !== undefined)
-      fetchData(setProducts, { skinType: skinType });
+      fetchData(setProducts, { skinType: skinType, orderCriteria: orderBy });
     else console.log("error in ShowProducts");
-  }, [skinType, userUid]);
+  }, [skinType, userUid, orderBy]);
 
   return (
     <div>
       {products.map((product) => {
         return (
-          <div key={product.Id}>
+          <div key={product.id}>
             <Product
-              id={product.Id}
+              id={product.id}
               name={product.Name}
               price={product.Price}
               brand={product.Brand}
