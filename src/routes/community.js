@@ -26,8 +26,19 @@ const Community = () => {
   // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
 
   const handleSubmit = () => {
+    // 제목 또는 내용이 비어 있는지 체크
+    if (!postTitle) {
+      alert("제목을 입력해주세요.");
+      return; // 함수 종료
+    }
+
+    if (!postContent) {
+      alert("게시글 내용을 입력해주세요.");
+      return; // 함수 종료
+    }
+
     const newPost = { title: postTitle, content: postContent };
-    createPostInFirestore(currentUser, newPost); //포스트를 파이어베이스에 등록함
+    createPostInFirestore(currentUser, newPost); // 포스트를 파이어베이스에 등록함
 
     setCreateModalVisible(false);
     setPostTitle("");
