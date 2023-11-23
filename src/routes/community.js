@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
 import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
-import useAuth from "../functions/useAuth.js";
+import useAuth from "../functions/useAuth";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
 import PostModal from "../components/PostModal.js";
@@ -17,6 +18,7 @@ const Community = () => {
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
   const currentUser = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts(setPosts);
@@ -40,7 +42,17 @@ const Community = () => {
     setDetailModalVisible(true); // 게시물 클릭 시 모달 열기
   };
 
-  const openCreateModal = () => setCreateModalVisible(true);
+  const openCreateModal = () => {
+    if (currentUser) {
+      setCreateModalVisible(true);
+    } else {
+      // 사용자가 로그인하지 않은 경우 경고창 띄우고 로그인 페이지로 이동
+      alert("로그인이 필요한 서비스입니다.");
+      // 로그인 페이지로 이동하는 코드 추가
+      navigate(`${process.env.PUBLIC_URL}/login`);
+    }
+  };
+
   const closeModal = () => {
     setSelectedPost(null);
     // 두 모달 모두 닫기
