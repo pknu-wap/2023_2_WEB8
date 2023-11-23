@@ -54,15 +54,6 @@ header {
   border: 0;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /* main */
 .main {
   position: relative;
@@ -201,4 +192,13 @@ header {
   width: 7%;
   height: 20%;
   cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -23,7 +23,6 @@ const PostModal = ({ post, onClose }) => {
           <div className="post_cont_sum">{post.content}</div>
           <Like postId={post.id} postLikes={post.likes} style />
           <Comment postId={post.id} />
-          {/* 댓글 기능 추가 */}
         </div>
       </div>
     </div>

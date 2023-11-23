@@ -13,33 +13,39 @@
   }
 }
 
+.product {
+  display: flex;
+  height: max-content;
+}
+
 .product-list {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  margin: 0;
+  margin: 0 15px;
   padding: 10px;
   animation: fadeInUp 0.5s ease-in-out;
 }
 
 .products {
-  width: 31%;
-  height: 40%;
+  width: 25%;
+  padding: 10px 15px;
 }
 
 .product-container {
   position: relative;
   border: 1px solid #ccc;
+  border-radius: 8px;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 450px;
   text-align: center;
   animation: fadeInUp 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .product-image img {
