@@ -1,7 +1,32 @@
-/* Product.css */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
 
-/* Product.css */
+/* 상품 레이아웃 및 정렬 */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.products {
+  width: 31%;
+  height: 40%;
+}
 
 .product-container {
   position: relative;
@@ -11,8 +36,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 100%;
+  height: 450px;
   text-align: center;
+  animation: fadeInUp 0.5s ease-in-out;
 }
 
 .product-image img {
@@ -23,22 +50,33 @@
 
 .product-info {
   width: 100%;
+  height: 30%;
+  display: flex;
+  margin-top: 5px;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .product-name {
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  height: fit-content;
 }
 
 .product-price {
-  color: #007bff; /* Blue color for price */
+  color: #007bff;
+  display: flex;
+  justify-content: center;
 }
 
 .product-rank {
-  color: #28a745; /* Green color for rank */
+  color: #28a745;
+  display: flex;
+  justify-content: center;
 }
-
-/* Add more styles as needed */
 
 /* LabelBtn.css */
 

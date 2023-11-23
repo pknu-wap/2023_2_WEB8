@@ -1,6 +1,6 @@
 import React from "react";
 import LabelBtn from "./LabelBtn";
-import "../css/Product.css"; // Import the CSS file
+import "../css/Product.css";
 
 function Product({ id, name, price, rank, uid }) {
   return (

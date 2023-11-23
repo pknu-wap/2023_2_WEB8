@@ -54,6 +54,15 @@ header {
   border: 0;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* main */
 .main {
   position: relative;
@@ -64,6 +73,7 @@ header {
   padding: var(--padding);
   background-color: var(--main-color1);
   border-radius: var(--radious);
+  animation: fadeInUp 0.5s ease-in-out;
 }
 
 .main .user_profile {
@@ -99,6 +109,10 @@ header {
   color: var(--main-color1);
 }
 
+.post_list {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
 .post_summary {
   padding: var(--padding);
   background-color: rgba(255, 255, 255, 0.5);
@@ -112,22 +126,16 @@ header {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.post_title_sum {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .post_cont_sum {
   margin: 8px 0;
 }
 
 /* Modal */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .modal {
   display: none;
