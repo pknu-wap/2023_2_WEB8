@@ -6,7 +6,6 @@ import ProductModal from "./ProductModal";
 function Product({ id, name, price, rank, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
   const handleProductClick = () => {
     setSelectedProduct({
       id,

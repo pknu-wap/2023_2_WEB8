@@ -7,7 +7,6 @@ const PostModal = ({ post, onClose }) => {
   if (!post) {
     return null;
   }
-  console.log(post);
   return (
     <div className="modal" style={{ display: post ? "block" : "none" }}>
       <div className="modal-content">

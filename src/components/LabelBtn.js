@@ -9,7 +9,6 @@ const LabelBtn = (props) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const handleFavorite = async () => {
-    console.log("userId", userId);
     try {
       //User Data Field Update
       const userRef = doc(db, "Users", userId);

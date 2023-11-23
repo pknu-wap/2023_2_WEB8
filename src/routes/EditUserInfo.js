@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { useSearchParams } from "react-router-dom";
 import useAuth from "../functions/useAuth";
 import { useNavigate } from "react-router-dom";
 import "../css/EditUserInfo.css";
@@ -11,7 +10,6 @@ const EditUserInfo = () => {
   const [skinType, setSkinType] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [searchParams] = useSearchParams();
   const currentUser = useAuth();
   const navigate = useNavigate();
 
@@ -23,12 +21,6 @@ const EditUserInfo = () => {
       setUid(currentUser.uid);
     }
   }, [currentUser]);
-
-  useEffect(() => {
-    const params = Object.fromEntries(searchParams);
-    setUid(params.uid);
-    // You can retrieve other params similarly if needed
-  }, [searchParams]);
 
   const handleCancel = () => {
     navigate(-1);
@@ -61,7 +53,7 @@ const EditUserInfo = () => {
           <input
             type="text"
             value={userName}
-            readOnly
+            readOnly={true}
             className="input-field"
           />
         </label>
@@ -69,7 +61,12 @@ const EditUserInfo = () => {
       <div className="form-group">
         <label>
           Email:
-          <input type="text" value={email} readOnly className="input-field" />
+          <input
+            type="text"
+            value={email}
+            readOnly={true}
+            className="input-field"
+          />
         </label>
       </div>
       <select

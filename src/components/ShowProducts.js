@@ -6,6 +6,7 @@ import "../css/Product.css";
 function ShowProducts(props) {
   const [products, setProducts] = useState([]);
   const { skinType, userUid, orderBy } = props;
+
   useEffect(() => {
     fetchData(setProducts, { skinType: skinType, orderCriteria: orderBy });
   }, [skinType, userUid, orderBy]);

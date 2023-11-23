@@ -1,20 +1,24 @@
 import List from "../components/List";
 import Favorites from "../components/Favorites";
-import ShowProducts from "../components/ShowProducts";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useAuth from "../functions/useAuth";
 import Navbars2 from "../components/Navbars2";
 import "../css/MyPage.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);
   const currentUser = useAuth();
+  const navigate = useNavigate();
 
   if (currentUser == null) {
     return <div>Please log in.</div>;
   }
+
+  const handleEdit = () => {
+    navigate(`/mypage/editInfo`);
+  };
 
   return (
     <div>
@@ -44,21 +48,9 @@ function MyPage() {
                 setNavButton(1);
               }}
             >
-              즐겨찾기
+              즐겨찾는 제품
             </li>
-            <li
-              className={navButton === 2 ? "active" : ""}
-              onClick={() => {
-                setNavButton(2);
-              }}
-            >
-              사용 제품 기록
-            </li>
-            <li>
-              <Link to={`/Mypage/editInfo`} className="Link-style">
-                회원 정보 수정
-              </Link>
-            </li>
+            <li onClick={handleEdit}>회원 정보 수정</li>
           </ul>
         </div>
         <div className="dashboard-content">
@@ -71,11 +63,6 @@ function MyPage() {
           {navButton === 1 && (
             <div>
               <Favorites userInfo={currentUser} />
-            </div>
-          )}
-          {navButton === 2 && (
-            <div>
-              <ShowProducts skinType={currentUser.skinType} />
             </div>
           )}
         </div>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Community from "./routes/community";
-
 import MyPage from "./routes/MyPage";
 import RegistrationForm from "./routes/Login";
 import Signup from "./routes/Signup";

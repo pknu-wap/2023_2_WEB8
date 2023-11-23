@@ -1,14 +1,14 @@
 import Product from "./Product";
 import { useEffect, useState } from "react";
-import fetchData from "../functions/fetchData";
+import fetchFavorProducts from "../functions/fetchFavorProducts";
 
 function Favorites({ userInfo }) {
   const [products, setProducts] = useState([]);
-  const skinType = userInfo.skinType;
+  const userid = userInfo.uid;
 
   useEffect(() => {
-    fetchData(setProducts, { skinType });
-  }, []);
+    fetchFavorProducts(setProducts, userid);
+  }, [userid]);
 
   return (
     <div>

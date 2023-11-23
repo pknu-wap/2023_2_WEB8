@@ -2,10 +2,9 @@ import { db } from "../firebase";
 import { collection, where, getDocs, query, orderBy } from "firebase/firestore";
 //import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-const fetchData = async (setProducts, { skinType, userUid, orderCriteria }) => {
+const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
   //userUid를 사용하는 경우와 skinType을 사용하는 경우를 처리해야함
   //userUid -> mypage, skinType -> main페이지
-
   try {
     let q = collection(db, "Products");
 

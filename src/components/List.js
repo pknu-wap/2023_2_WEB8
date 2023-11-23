@@ -21,7 +21,6 @@ function List(prop) {
               key={article.id}
               title={article.title}
               content={article.content}
-              img={article.img}
             />
           </div>
         );
