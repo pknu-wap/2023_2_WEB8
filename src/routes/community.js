@@ -89,7 +89,6 @@ const Community = () => {
 
         <div className="post_list">
           {posts.map((post) => {
-            console.log(post);
             return (
               <div
                 key={post.id}
