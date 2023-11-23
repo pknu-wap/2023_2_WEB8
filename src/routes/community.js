@@ -78,7 +78,11 @@ const Community = () => {
       <Navbars2 />
       <div className="main">
         <div className="user_profile">
-          <img src="./images/profile.png" alt="사용자 프로필 사진" />
+          <img
+            src="./images/profile.png"
+            alt="사용자 프로필 사진"
+            onClick={() => navigate(`${process.env.PUBLIC_URL}/myPage`)}
+          />
           <button className="write_post_btn" onClick={openCreateModal}>
             게시물 작성하기
           </button>
