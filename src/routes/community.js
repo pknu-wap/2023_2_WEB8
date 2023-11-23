@@ -8,6 +8,7 @@ import useAuth from "../functions/useAuth.js";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
 import PostModal from "../components/PostModal.js";
+import deletePostInFirestore from "../functions/deletePost";
 
 const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
@@ -48,6 +49,11 @@ const Community = () => {
     setDetailModalVisible(false);
     setPostTitle("");
     setPostContent("");
+  };
+
+  const handleDeletePost = (postId) => {
+    // postId를 받아와 해당 게시물을 삭제
+    deletePostInFirestore(postId);
   };
 
   return (
