@@ -30,6 +30,10 @@ const EditUserInfo = () => {
     // You can retrieve other params similarly if needed
   }, [searchParams]);
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   const handleEdit = async () => {
     try {
       if (uid && skinType) {
@@ -87,7 +91,9 @@ const EditUserInfo = () => {
       <button onClick={handleEdit} className="btn-confirm">
         확인
       </button>
-      <button className="btn-cancel">취소</button>
+      <button onClick={handleCancel} className="btn-cancel">
+        취소
+      </button>
     </div>
   );
 };

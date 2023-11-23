@@ -5,26 +5,24 @@ import "../css/Product.css";
 
 function ShowProducts(props) {
   const [products, setProducts] = useState([]);
-  const { skinType, userUid } = props;
+  const { skinType, userUid, orderBy } = props;
   useEffect(() => {
-    if (userUid !== undefined) fetchData(setProducts, { userUid: userUid });
-    else if (skinType !== undefined)
-      fetchData(setProducts, { skinType: skinType });
-    else console.log("error in ShowProducts");
-  }, [skinType, userUid]);
+    fetchData(setProducts, { skinType: skinType, orderCriteria: orderBy });
+  }, [skinType, userUid, orderBy]);
 
   return (
     <div className="product-list">
       {products.map((product) => {
         return (
-          <div className="products" key={product.Id}>
+          <div className="products" key={product.id}>
             <Product
-              id={product.Id}
+              id={product.id}
               name={product.Name}
               price={product.Price}
               brand={product.Brand}
               label={product.Label}
               rank={product.Rank}
+              uid={userUid}
             />
           </div>
         );

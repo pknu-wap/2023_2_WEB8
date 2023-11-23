@@ -16,7 +16,12 @@ function Navbars() {
   return (
     <div>
       <header className="navbar-style-7">
-        <img className="logo_img" src="./images/logo_black.png" alt="LOGO" />
+        <img
+          className="logo_img"
+          src="./images/logo_black.png"
+          alt="LOGO"
+          onClick={() => navigate(`${process.env.PUBLIC_URL}/main`)}
+        />
         <div className="nav_list">
           <button
             className="nav_button"
