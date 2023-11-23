@@ -6,10 +6,7 @@ function ShowProducts(props) {
   const [products, setProducts] = useState([]);
   const { skinType, userUid, orderBy } = props;
   useEffect(() => {
-    //if (userUid !== undefined) fetchData(setProducts, { userUid: userUid });
-    if (skinType !== undefined)
-      fetchData(setProducts, { skinType: skinType, orderCriteria: orderBy });
-    else console.log("error in ShowProducts");
+    fetchData(setProducts, { skinType: skinType, orderCriteria: orderBy });
   }, [skinType, userUid, orderBy]);
 
   return (
