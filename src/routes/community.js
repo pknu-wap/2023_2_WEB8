@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
 import "./community_post.css";
 import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
-import useAuth from "../functions/useAuth.js";
+import useAuth from "../functions/useAuth";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
 import PostModal from "../components/PostModal.js";
@@ -17,6 +18,7 @@ const Community = () => {
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
   const currentUser = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts(setPosts);
@@ -24,8 +26,19 @@ const Community = () => {
   // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
 
   const handleSubmit = () => {
+    // 제목 또는 내용이 비어 있는지 체크
+    if (!postTitle) {
+      alert("제목을 입력해주세요.");
+      return; // 함수 종료
+    }
+
+    if (!postContent) {
+      alert("게시글 내용을 입력해주세요.");
+      return; // 함수 종료
+    }
+
     const newPost = { title: postTitle, content: postContent };
-    createPostInFirestore(currentUser, newPost); //포스트를 파이어베이스에 등록함
+    createPostInFirestore(currentUser, newPost); // 포스트를 파이어베이스에 등록함
 
     setCreateModalVisible(false);
     setPostTitle("");
@@ -40,7 +53,17 @@ const Community = () => {
     setDetailModalVisible(true); // 게시물 클릭 시 모달 열기
   };
 
-  const openCreateModal = () => setCreateModalVisible(true);
+  const openCreateModal = () => {
+    if (currentUser) {
+      setCreateModalVisible(true);
+    } else {
+      // 사용자가 로그인하지 않은 경우 경고창 띄우고 로그인 페이지로 이동
+      alert("로그인이 필요한 서비스입니다.");
+      // 로그인 페이지로 이동하는 코드 추가
+      navigate(`${process.env.PUBLIC_URL}/login`);
+    }
+  };
+
   const closeModal = () => {
     setSelectedPost(null);
     // 두 모달 모두 닫기
@@ -55,7 +78,11 @@ const Community = () => {
       <Navbars2 />
       <div className="main">
         <div className="user_profile">
-          <img src="./images/profile.png" alt="사용자 프로필 사진" />
+          <img
+            src="./images/profile.png"
+            alt="사용자 프로필 사진"
+            onClick={() => navigate(`${process.env.PUBLIC_URL}/myPage`)}
+          />
           <button className="write_post_btn" onClick={openCreateModal}>
             게시물 작성하기
           </button>
