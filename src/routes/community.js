@@ -7,8 +7,7 @@ import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
-import PostModal from "../components/PostModal";
-import deletePostInFirestore from "../functions/deletePost.js";
+import PostModal from "../components/PostModal.js";
 
 const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
@@ -112,9 +111,8 @@ const Community = () => {
         </div>
 
         <PostModal
-          user={currentUser}
           post={selectedPost}
-          onClose={() => setDetailModalVisible(false)}
+          onClose={closeModal}
           isVisible={isDetailModalVisible}
         />
 

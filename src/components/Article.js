@@ -10,13 +10,8 @@
 function Article(props) {
   return (
     <div>
-      <div>
-        <h5>{props.title}</h5>
-        <span>{props.content}</span>
-      </div>
-      <div>
-        <img src={process.env.PUBLIC_URL + props.img} alt={`image`} />
-      </div>
+      <h5>{props.title}</h5>
+      <span>{props.content}</span>
     </div>
   );
 }
