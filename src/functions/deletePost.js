@@ -9,7 +9,8 @@ const deletePostInFirestore = async (postId) => {
     await deleteDoc(doc(db, "posts", postId));
     console.log("게시물이 삭제되었습니다.");
   } catch (error) {
-    console.error("게시물 삭제 중 오류 발생:", error);
+    console.error("게시물 삭제 중 오류 발생:", error.message);
+    // 필요에 따라 더 자세한 오류 처리 추가
   }
 };
 

@@ -7,8 +7,8 @@ import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth.js";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
-import PostModal from "../components/PostModal.js";
-import deletePostInFirestore from "../functions/deletePost";
+import PostModal from "../components/PostModal";
+import deletePostInFirestore from "../functions/deletePost.js";
 
 const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
@@ -51,11 +51,6 @@ const Community = () => {
     setPostContent("");
   };
 
-  const handleDeletePost = (postId) => {
-    // postId를 받아와 해당 게시물을 삭제
-    deletePostInFirestore(postId);
-  };
-
   return (
     <div>
       <Navbars2 />
@@ -91,8 +86,9 @@ const Community = () => {
         </div>
 
         <PostModal
+          user={currentUser}
           post={selectedPost}
-          onClose={closeModal}
+          onClose={() => setDetailModalVisible(false)}
           isVisible={isDetailModalVisible}
         />
 
