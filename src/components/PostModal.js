@@ -1,6 +1,7 @@
 import React from "react";
 import Like from "./Like";
 import Comment from "./Comment";
+import DeleteButton from "./deleteButton";
 
 const PostModal = ({ post, onClose }) => {
   if (!post) {
@@ -23,6 +24,7 @@ const PostModal = ({ post, onClose }) => {
           <div className="post_cont_sum">{post.content}</div>
           <Like postId={post.id} postLikes={post.likes} style />
           <Comment postId={post.id} />
+          <DeleteButton postId={post.id} />
         </div>
       </div>
     </div>
