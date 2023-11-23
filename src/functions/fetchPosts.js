@@ -17,7 +17,7 @@ const fetchPosts = async (setPosts) => {
       postsData.push({
         id: post.id,
         timestamp: createdTime,
-        uid: post.uid,
+        uid: post.userid,
         title: post.title,
         content: post.content,
         userName: post.userName,
