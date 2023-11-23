@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
+
+:root {
+  /* color */
+  --main-color1: #9ed2be;
+  --main-color2: #7eaa92;
+  --color-gray: #d3d3d3;
+
+  /* size */
+  --padding: 12px;
+  --radious: 10px;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cosmetic-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.select-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 랭킹 텍스트 스타일 */
+.ranking-text {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 6%;
+  margin: 0;
+}
+
+.ranking-text h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.select-button {
+  display: flex;
+  align-items: center;
+  width: 65%;
+  margin: 0;
+  padding: 0;
+}
+
+.select-button button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 10px;
+  margin: 0 5px;
+  width: 30%;
+  height: 80%;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.select-button button:hover {
+  background-color: var(--main-color1);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.select-button button:disabled {
+  background-color: #7eaa92;
+  color: #fff;
+}
+
+/* 검색 영역 스타일 */
+.search-area {
+  display: flex;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-area span {
+  background-color: var(--main-color1);
+  color: #fff;
+  padding: 10px;
+  border: 1px solid var(--main-color2);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.search-area span:hover {
+  background-color: var(--main-color2);
+}

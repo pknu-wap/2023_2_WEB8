@@ -1,6 +1,7 @@
 import Product from "./Product";
 import { useEffect, useState } from "react";
 import fetchData from "../functions/fetchData";
+import "../css/Product.css";
 
 function ShowProducts(props) {
   const [products, setProducts] = useState([]);
@@ -10,10 +11,10 @@ function ShowProducts(props) {
   }, [skinType, userUid, orderBy]);
 
   return (
-    <div>
+    <div className="product-list">
       {products.map((product) => {
         return (
-          <div key={product.id}>
+          <div className="products" key={product.id}>
             <Product
               id={product.id}
               name={product.Name}

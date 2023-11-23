@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./community_style.css";
-import "./community_post.css";
 import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth";
