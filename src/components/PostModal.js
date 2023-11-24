@@ -3,10 +3,13 @@ import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 
-const PostModal = ({ post, onClose }) => {
+const PostModal = ({ post, onClose, currentUser }) => {
   if (!post) {
     return null;
   }
+
+  const userName = currentUser.userName;
+
   return (
     <div className="modal" style={{ display: post ? "block" : "none" }}>
       <div className="modal-content">
@@ -22,7 +25,7 @@ const PostModal = ({ post, onClose }) => {
           <div>{post.timestamp}</div>
           <div className="post_cont_sum">{post.content}</div>
           <Like postId={post.id} postLikes={post.likes} style />
-          <Comment postId={post.id} />
+          <Comment postId={post.id} uid={post.uid} userName={userName} />
           <DeleteButton postId={post.id} />
         </div>
       </div>

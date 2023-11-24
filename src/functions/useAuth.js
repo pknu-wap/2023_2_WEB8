@@ -11,9 +11,6 @@ const useAuth = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
-        setUser(authUser);
-        console.log("사용자가 로그인했씁니다.", authUser.email);
-
         try {
           // Firestore에서 특정 사용자의 데이터를 가져오기
           const userRef = doc(db, "Users", authUser.uid);
@@ -21,12 +18,17 @@ const useAuth = () => {
 
           if (snapshot.exists()) {
             const userData = snapshot.data();
-            setUser((prevUser) => ({
-              ...prevUser,
-              uid: userData.uid,
-              userName: userData.userName,
-              skinType: userData.skinType,
-            }));
+            const { uid, userName, skinType } = userData;
+
+            if (userName && skinType) {
+              console.log("사용자가 로그인했씁니다.", authUser.email);
+              setUser(() => ({
+                ...authUser,
+                uid,
+                userName,
+                skinType,
+              }));
+            }
           } else {
             console.log("해당 사용자의 데이터가 존재하지 않습니다.");
           }
