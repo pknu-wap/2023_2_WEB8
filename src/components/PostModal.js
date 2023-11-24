@@ -4,16 +4,13 @@ import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 import useAuth from "../functions/useAuth";
 
-const PostModal = ({ post, onClose }) => {
-  const user = useAuth(); // useAuth 훅을 사용하여 사용자 정보 얻어오기
-  // console.log(user);
-  // console.log(post);
-
+const PostModal = ({ post, onClose, currentUser }) => {
   if (!post) {
     return null;
   }
 
-  const isCurrentUserPost = user && post.uid === user.uid;
+  const userName = currentUser.userName;
+  const isCurrentUserPost = post.uid === currentUser.uid;
 
   const handleDeletePost = () => {
     onClose(); // 모달 닫기
@@ -34,7 +31,7 @@ const PostModal = ({ post, onClose }) => {
           <div>{post.timestamp}</div>
           <div className="post_cont_sum">{post.content}</div>
           <Like postId={post.id} postLikes={post.likes} style />
-          <Comment postId={post.id} />
+          <Comment postId={post.id} uid={post.uid} userName={userName} />
           {isCurrentUserPost && (
             <DeleteButton
               postId={post.id}

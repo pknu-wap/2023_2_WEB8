@@ -4,7 +4,6 @@ function formatTime(timeobj) {
   const currentTime = new Date().getTime();
   const receivedTime = new Date(milliseconds).getTime();
   const timeDifference = currentTime - receivedTime;
-  console.log(receivedTime);
   const oneDay = 24 * 60 * 60 * 1000;
   const oneYear = 365 * oneDay;
 

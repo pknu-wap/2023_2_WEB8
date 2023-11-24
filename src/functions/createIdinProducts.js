@@ -7,7 +7,6 @@ const createIdinProducts = async () => {
 
     querySnapshot.forEach(async (productDoc) => {
       const productRef = doc(db, "Products", productDoc.id);
-      console.log(productDoc.id);
       await updateDoc(productRef, {
         id: productDoc.id,
       });

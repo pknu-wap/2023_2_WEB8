@@ -111,6 +111,7 @@ const Community = () => {
         </div>
 
         <PostModal
+          currentUser={currentUser}
           post={selectedPost}
           onClose={closeModal}
           isVisible={isDetailModalVisible}

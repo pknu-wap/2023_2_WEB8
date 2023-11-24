@@ -5,7 +5,6 @@ const LikedFunc = async (postId, liked) => {
   // Firestore에서 해당 게시물의 정보 가져오기
   const docRef = doc(db, "Posts", postId);
   const snapshot = await getDoc(docRef);
-  console.log(docRef);
 
   if (snapshot.exists()) {
     const postData = snapshot.data();
