@@ -2,11 +2,18 @@ import React from "react";
 import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
+import useAuth from "../functions/useAuth";
 
 const PostModal = ({ post, onClose }) => {
+  const currentUser = useAuth();
+
   if (!post) {
     return null;
   }
+  const isCurrentUserPost = currentUser && post.userId === currentUser.uid;
+  console.log(currentUser);
+  console.log(post.userId);
+
   return (
     <div className="modal" style={{ display: post ? "block" : "none" }}>
       <div className="modal-content">
@@ -23,7 +30,7 @@ const PostModal = ({ post, onClose }) => {
           <div className="post_cont_sum">{post.content}</div>
           <Like postId={post.id} postLikes={post.likes} style />
           <Comment postId={post.id} />
-          <DeleteButton postId={post.id} />
+          {isCurrentUserPost && <DeleteButton postId={post.id} />}
         </div>
       </div>
     </div>
