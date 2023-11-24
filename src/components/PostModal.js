@@ -4,15 +4,14 @@ import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 import useAuth from "../functions/useAuth";
 
-const PostModal = ({ post, onClose }) => {
-  const currentUser = useAuth();
-
+const PostModal = ({ post, onClose, user }) => {
   if (!post) {
     return null;
   }
-  const isCurrentUserPost = currentUser && post.userId === currentUser.uid;
-  console.log(currentUser);
-  console.log(post.userId);
+
+  const isCurrentUserPost = user && post.userId === user.uid;
+  console.log(isCurrentUserPost);
+  console.log(user);
 
   return (
     <div className="modal" style={{ display: post ? "block" : "none" }}>
