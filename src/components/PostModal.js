@@ -3,7 +3,7 @@ import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 
-const PostModal = ({ post, onClose, currentUser, isVisible }) => {
+const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
   if (!post || !isVisible) {
     return null;
   }
@@ -12,6 +12,7 @@ const PostModal = ({ post, onClose, currentUser, isVisible }) => {
   const isCurrentUserPost = post.uid === currentUser.uid;
 
   const handleDeletePost = () => {
+    setIsUpdate((prev) => !prev);
     onClose(); // 모달 닫기
   };
 

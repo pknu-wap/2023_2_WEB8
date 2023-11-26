@@ -16,8 +16,12 @@ const Review = ({ product }) => {
   const [reviews, setReviews] = useState([]);
   const [currentReview, setCurrentReview] = useState("");
   const [currentRating, setCurrentRating] = useState(0);
-  const [isUpdate, setIsUpdate] = useState(true);
   const user = useAuth();
+
+  //실시간 업데이트를 위한 state
+  //버튼을 클릭할때 변경되도록 함
+  //=> useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
+  const [isUpdate, setIsUpdate] = useState(true);
 
   const handleAddReview = (e) => {
     e.preventDefault();
@@ -47,7 +51,7 @@ const Review = ({ product }) => {
         userName: user.userName,
         rating: currentRating,
         content: currentReview,
-        timestamp: serverTimestamp(),
+        timestamp: new Date(),
       });
     } catch (error) {
       console.log("Error in createReviewInFirebase of Review <<< ", error);
