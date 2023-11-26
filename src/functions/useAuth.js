@@ -9,6 +9,7 @@ const useAuth = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    console.log("useEffect 내부, user 값:", user);
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
         try {
@@ -43,6 +44,10 @@ const useAuth = () => {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    console.log("user 상태가 변경되었습니다.", user);
+  }, [user]);
 
   return user;
 };
