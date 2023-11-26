@@ -1,5 +1,5 @@
 import React from "react";
-import Review from "./Review";
+import Review from "./review";
 
 const ProductModal = ({ isOpen, product, onClose }) => {
   // 모달이 열리지 않거나 선택한 상품이 없을 경우 아무것도 렌더링하지 않음
