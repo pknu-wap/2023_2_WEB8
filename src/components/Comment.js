@@ -15,6 +15,7 @@ import formatTime from "../functions/formatTime";
 const Comment = ({ postId, uid, userName }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [isUpdate, setIsUpdate] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,12 +24,13 @@ const Comment = ({ postId, uid, userName }) => {
     } else {
       createCommentInFirestore();
       setNewComment("");
+      setIsUpdate((prev) => !prev);
     }
   };
 
   useEffect(() => {
     fetchComment(setComments);
-  });
+  }, [isUpdate]);
 
   const createCommentInFirestore = async () => {
     try {

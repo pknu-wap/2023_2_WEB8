@@ -19,9 +19,11 @@ const Community = () => {
   const currentUser = useAuth();
   const navigate = useNavigate();
 
+  const [isUpdate, setIsUpdate] = useState(true);
+
   useEffect(() => {
     fetchPosts(setPosts);
-  }, []);
+  }, [isUpdate]);
   // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
 
   const handleSubmit = () => {
@@ -42,6 +44,7 @@ const Community = () => {
     setCreateModalVisible(false);
     setPostTitle("");
     setPostContent("");
+    setIsUpdate((prev) => !prev);
   };
 
   const [selectedPost, setSelectedPost] = useState(null);

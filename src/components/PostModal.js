@@ -2,10 +2,9 @@ import React from "react";
 import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
-import useAuth from "../functions/useAuth";
 
-const PostModal = ({ post, onClose, currentUser }) => {
-  if (!post) {
+const PostModal = ({ post, onClose, currentUser, isVisible }) => {
+  if (!post || !isVisible) {
     return null;
   }
 
