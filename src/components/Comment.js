@@ -3,7 +3,6 @@ import "../css/Comment.css";
 import { db } from "../firebase";
 import {
   addDoc,
-  serverTimestamp,
   collection,
   orderBy,
   getDocs,
@@ -38,7 +37,7 @@ const Comment = ({ postId, uid, userName }) => {
 
   const createCommentInFirestore = async () => {
     try {
-      const docRef = await addDoc(collection(db, "Comments"), {
+      await addDoc(collection(db, "Comments"), {
         postId: postId,
         userId: uid,
         userName: userName,

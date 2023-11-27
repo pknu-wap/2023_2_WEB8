@@ -1,10 +1,4 @@
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  updateDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const createPostInFirestore = async (user, article) => {

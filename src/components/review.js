@@ -8,7 +8,6 @@ import {
   getDocs,
   query,
   where,
-  serverTimestamp,
 } from "firebase/firestore";
 import "../css/Review.css";
 
@@ -45,7 +44,7 @@ const Review = ({ product }) => {
 
   const createReviewInFirebase = async () => {
     try {
-      const docRef = await addDoc(collection(db, "Reviews"), {
+      await addDoc(collection(db, "Reviews"), {
         productId: product.id,
         userId: user.uid,
         userName: user.userName,
