@@ -1,6 +1,4 @@
 function formatTime(timeobj) {
-  if (!timeobj) return undefined;
-
   const milliseconds =
     timeobj.seconds * 1000 + Math.floor(timeobj.nanoseconds / 1000000);
   const currentTime = new Date().getTime();

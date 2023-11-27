@@ -16,7 +16,15 @@ function ShowProducts(props) {
       {products.map((product) => {
         return (
           <div className="products" key={product.id}>
-            <Product productInfo={product} uid={userUid} />
+            <Product
+              id={product.id}
+              name={product.Name}
+              price={product.Price}
+              brand={product.Brand}
+              label={product.Label}
+              rank={product.Rank}
+              uid={userUid}
+            />
           </div>
         );
       })}

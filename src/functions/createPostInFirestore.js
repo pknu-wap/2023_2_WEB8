@@ -20,7 +20,7 @@ const createPostInFirestore = async (user, article) => {
       userSkinType: skinType,
       title: title,
       content: content,
-      timestamp: new Date(),
+      timestamp: serverTimestamp(),
     });
 
     const Ref = doc(db, "Posts", docRef.id);

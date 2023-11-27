@@ -16,11 +16,6 @@ const Comment = ({ postId, uid, userName }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
-  //실시간 업데이트를 위한 state
-  //버튼을 클릭할때 변경되도록 함
-  //=> useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
-  const [isUpdate, setIsUpdate] = useState(true);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newComment) {
@@ -28,13 +23,12 @@ const Comment = ({ postId, uid, userName }) => {
     } else {
       createCommentInFirestore();
       setNewComment("");
-      setIsUpdate((prev) => !prev);
     }
   };
 
   useEffect(() => {
     fetchComment(setComments);
-  }, [isUpdate]);
+  });
 
   const createCommentInFirestore = async () => {
     try {
@@ -43,7 +37,7 @@ const Comment = ({ postId, uid, userName }) => {
         userId: uid,
         userName: userName,
         content: newComment,
-        timestamp: new Date(),
+        timestamp: serverTimestamp(),
       });
     } catch (error) {
       console.log("Error in createCommentInFirestore of Comment <<< ", error);
@@ -90,7 +84,6 @@ const Comment = ({ postId, uid, userName }) => {
           return (
             <li key={index} className="comment-item">
               <div>{comment.userName}</div>
-              <div>{comment.timestamp}</div>
               <div>{comment.content}</div>
             </li>
           );

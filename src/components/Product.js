@@ -3,11 +3,16 @@ import LabelBtn from "./LabelBtn";
 import "../css/Product.css";
 import ProductModal from "./ProductModal";
 
-function Product({ productInfo, uid }) {
+function Product({ id, name, price, rank, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { Name, Price, Rank, id } = productInfo;
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const handleProductClick = () => {
+    setSelectedProduct({
+      id,
+      name,
+      price,
+      rank,
+    });
     setIsModalOpen(true);
   };
 
@@ -17,6 +22,7 @@ function Product({ productInfo, uid }) {
 
   return (
     <div className="product">
+<<<<<<< HEAD
       <div key={id} className="product-container" onClick={handleProductClick}>
         <div className="product-image">
           <img src="./images/community.png" alt="LOGO" />
@@ -25,14 +31,26 @@ function Product({ productInfo, uid }) {
           <div className="product-name">{Name}</div>
           <div className="product-price">{Price}$</div>
           <div className="product-rank">{Rank}점</div>
+=======
+      <div key={id} className="product-container">
+        <div onClick={handleProductClick}>
+          <div className="product-image">
+            <img src="./images/community.png" alt="LOGO" />
+          </div>
+          <div className="product-info">
+            <div className="product-name">{name}</div>
+            <div className="product-price">{price}$</div>
+            <div className="product-rank">{rank}점</div>
+          </div>
+>>>>>>> parent of 434006b (Merge branch 'main' into 커뮤니티-마무리)
         </div>
-        <LabelBtn productId={id} productName={Name} userId={uid} />
+        <LabelBtn productId={id} productName={name} userId={uid} />
       </div>
 
       <ProductModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        product={productInfo}
+        product={selectedProduct}
       />
     </div>
   );
