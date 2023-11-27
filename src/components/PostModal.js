@@ -3,7 +3,6 @@ import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 import "../css/community_style.css";
-import useAuth from "../functions/useAuth";
 
 const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
   if (!post || !isVisible) {
