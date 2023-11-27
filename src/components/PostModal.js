@@ -5,8 +5,8 @@ import DeleteButton from "./deleteButton";
 import "../css/community_style.css";
 import useAuth from "../functions/useAuth";
 
-const PostModal = ({ post, onClose, currentUser }) => {
-  if (!post) {
+const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
+  if (!post || !isVisible) {
     return null;
   }
 
@@ -14,6 +14,7 @@ const PostModal = ({ post, onClose, currentUser }) => {
   const isCurrentUserPost = post.uid === currentUser.uid;
 
   const handleDeletePost = () => {
+    setIsUpdate((prev) => !prev);
     onClose(); // 모달 닫기
   };
 

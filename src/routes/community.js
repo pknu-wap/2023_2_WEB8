@@ -19,12 +19,17 @@ const Community = () => {
   const currentUser = useAuth();
   const navigate = useNavigate();
 
+  //실시간 업데이트를 위한 state
+  //버튼을 클릭할때 변경되도록 함. => useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
+  const [isUpdate, setIsUpdate] = useState(true);
+
   useEffect(() => {
     fetchPosts(setPosts);
-  }, []);
+  }, [isUpdate]);
   // 새로운 게시물을 배열 맨 앞에 추가하여 최신순으로 정렬
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     // 제목 또는 내용이 비어 있는지 체크
     if (!postTitle) {
       alert("제목을 입력해주세요.");
@@ -35,13 +40,14 @@ const Community = () => {
       alert("게시글 내용을 입력해주세요.");
       return; // 함수 종료
     }
-
+    console.log("HI");
     const newPost = { title: postTitle, content: postContent };
-    createPostInFirestore(currentUser, newPost); // 포스트를 파이어베이스에 등록함
+    await createPostInFirestore(currentUser, newPost); // 포스트를 파이어베이스에 등록함
 
     setCreateModalVisible(false);
     setPostTitle("");
     setPostContent("");
+    setIsUpdate((prev) => !prev);
   };
 
   const [selectedPost, setSelectedPost] = useState(null);
@@ -88,7 +94,7 @@ const Community = () => {
         </div>
 
         <div className="post_list">
-          {posts.map((post) => {
+          {posts.map((post, index) => {
             return (
               <div key={post.id} className="post_summary">
                 <div onClick={() => handlePostClick(post)}>
@@ -118,6 +124,7 @@ const Community = () => {
         </div>
 
         <PostModal
+          setIsUpdate={setIsUpdate}
           currentUser={currentUser}
           post={selectedPost}
           onClose={closeModal}
@@ -128,7 +135,7 @@ const Community = () => {
           className="modal"
           style={{ display: isCreateModalVisible ? "block" : "none" }}
         >
-          <div className="modal-content">
+          <form className="modal-content">
             <div className="modal-header">
               <h2>게시물 작성</h2>
               <span className="close" onClick={closeModal}>
@@ -160,7 +167,7 @@ const Community = () => {
                 등록
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

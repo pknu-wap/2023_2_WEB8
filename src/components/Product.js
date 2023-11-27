@@ -3,16 +3,11 @@ import LabelBtn from "./LabelBtn";
 import "../css/Product.css";
 import ProductModal from "./ProductModal";
 
-function Product({ id, name, price, rank, uid }) {
+function Product({ productInfo, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { Name, Price, Rank, id } = productInfo;
+
   const handleProductClick = () => {
-    setSelectedProduct({
-      id,
-      name,
-      price,
-      rank,
-    });
     setIsModalOpen(true);
   };
 
@@ -32,14 +27,15 @@ function Product({ id, name, price, rank, uid }) {
             <div className="product-price">{price}$</div>
             <div className="product-rank">{rank}점</div>
           </div>
+
         </div>
-        <LabelBtn productId={id} productName={name} userId={uid} />
+        <LabelBtn productId={id} productName={Name} userId={uid} />
       </div>
 
       <ProductModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        product={selectedProduct}
+        product={productInfo}
       />
     </div>
   );
