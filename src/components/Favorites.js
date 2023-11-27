@@ -12,10 +12,18 @@ function Favorites({ userInfo }) {
 
   return (
     <div>
-      {products.map((product, index) => {
+      {products.map((product) => {
         return (
-          <div key={index}>
-            <Product productInfo={product} uid={userInfo.uid} />
+          <div key={product.id}>
+            <Product
+              id={product.id}
+              name={product.Name}
+              price={product.Price}
+              brand={product.Brand}
+              label={product.Label}
+              rank={product.Rank}
+              uid={userInfo.uid}
+            />
           </div>
         );
       })}

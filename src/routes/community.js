@@ -20,8 +20,7 @@ const Community = () => {
   const navigate = useNavigate();
 
   //실시간 업데이트를 위한 state
-  //버튼을 클릭할때 변경되도록 함
-  //=> useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
+  //버튼을 클릭할때 변경되도록 함. => useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
   const [isUpdate, setIsUpdate] = useState(true);
 
   useEffect(() => {
@@ -97,7 +96,7 @@ const Community = () => {
         <div className="post_list">
           {posts.map((post, index) => {
             return (
-              <div key={index} className="post_summary">
+              <div key={post.id} className="post_summary">
                 <div onClick={() => handlePostClick(post)}>
                   <div className="post_title_sum">{post.title}</div>
                   <div className="post_info">
