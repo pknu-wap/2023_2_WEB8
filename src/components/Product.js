@@ -17,17 +17,14 @@ function Product({ productInfo, uid }) {
 
   return (
     <div className="product">
-      <div key={id} className="product-container">
-        <div onClick={handleProductClick}>
-          <div className="product-image">
-            <img src="./images/community.png" alt="LOGO" />
-          </div>
-          <div className="product-info">
-            <div className="product-name">{name}</div>
-            <div className="product-price">{price}$</div>
-            <div className="product-rank">{rank}점</div>
-          </div>
-
+      <div key={id} className="product-container" onClick={handleProductClick}>
+        <div className="product-image">
+          <img src="./images/community.png" alt="LOGO" />
+        </div>
+        <div className="product-info">
+          <div className="product-name">{Name}</div>
+          <div className="product-price">{Price}$</div>
+          <div className="product-rank">{Rank}점</div>
         </div>
         <LabelBtn productId={id} productName={Name} userId={uid} />
       </div>

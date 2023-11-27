@@ -62,7 +62,7 @@
 .select-button {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 65%;
   margin: 0;
   padding: 0;
 }
@@ -87,27 +87,6 @@
 
 .select-button button:disabled {
   background-color: #7eaa92;
-  color: #fff;
-}
-
-.select-dropdown {
-  display: flex;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: #fff;
-  color: #333;
-  transition: border-color 0.3s ease-in-out;
-}
-
-.select-dropdown:hover {
-  border-color: var(--main-color1);
-}
-
-.select-dropdown option:checked {
-  background-color: var(--main-color2);
   color: #fff;
 }
 

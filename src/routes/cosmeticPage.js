@@ -56,22 +56,18 @@ function CosmeticLanking() {
               민감성
             </button>
           </div>
-          <select
-            value={order}
-            onChange={handleSelectChange}
-            className="select-dropdown"
-          >
+          <select value={order} onChange={handleSelectChange}>
             <option value="Rank">별점순</option>
             <option value="favorites">인기순</option>
             <option value="lowest-price">낮은 가격순</option>
             <option value="highest-price">높은 가격순</option>
           </select>
-          {/* <div className="search-area">
+          <div className="search-area">
             <form>
               <input type="search" placeholder="검색"></input>
               <span>검색</span>
             </form>
-          </div> */}
+          </div>
         </div>
         <ShowProducts
           skinType={userSkinType}

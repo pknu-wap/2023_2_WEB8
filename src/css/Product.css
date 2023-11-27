@@ -46,11 +46,6 @@
   cursor: pointer;
 }
 
-.product-image {
-  display: flex;
-  margin-bottom: 2px;
-}
-
 .product-image img {
   display: flex;
   max-width: 100%;
