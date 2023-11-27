@@ -22,16 +22,6 @@ function Product({ id, name, price, rank, uid }) {
 
   return (
     <div className="product">
-<<<<<<< HEAD
-      <div key={id} className="product-container" onClick={handleProductClick}>
-        <div className="product-image">
-          <img src="./images/community.png" alt="LOGO" />
-        </div>
-        <div className="product-info">
-          <div className="product-name">{Name}</div>
-          <div className="product-price">{Price}$</div>
-          <div className="product-rank">{Rank}점</div>
-=======
       <div key={id} className="product-container">
         <div onClick={handleProductClick}>
           <div className="product-image">
@@ -42,7 +32,6 @@ function Product({ id, name, price, rank, uid }) {
             <div className="product-price">{price}$</div>
             <div className="product-rank">{rank}점</div>
           </div>
->>>>>>> parent of 434006b (Merge branch 'main' into 커뮤니티-마무리)
         </div>
         <LabelBtn productId={id} productName={name} userId={uid} />
       </div>
