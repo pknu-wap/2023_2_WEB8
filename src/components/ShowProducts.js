@@ -13,9 +13,9 @@ function ShowProducts(props) {
 
   return (
     <div className="product-list">
-      {products.map((product) => {
+      {products.map((product, index) => {
         return (
-          <div className="products" key={product.id}>
+          <div className="products" key={index}>
             <Product productInfo={product} uid={userUid} />
           </div>
         );
