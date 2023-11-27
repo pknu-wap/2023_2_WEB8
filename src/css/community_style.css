@@ -126,6 +126,15 @@ header {
   margin: 8px 0;
 }
 
+.post_info {
+  display: flex;
+}
+
+.heart {
+  width: fit-content;
+  cursor: pointer;
+}
+
 /* Modal */
 
 .modal {
