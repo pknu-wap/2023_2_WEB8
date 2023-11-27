@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import "./community_style.css";
+import "../css/community_style.css";
 import Navbars2 from "../components/Navbars2.js";
 import Like from "../components/Like.js";
 import useAuth from "../functions/useAuth";
@@ -96,21 +96,28 @@ const Community = () => {
         <div className="post_list">
           {posts.map((post, index) => {
             return (
-              <div
-                key={index}
-                className="post_summary"
-                onClick={() => handlePostClick(post)}
-              >
-                <div className="post_title_sum">{post.title}</div>
-                <div className="user_info">{post.userName}</div>
-                <div>{post.timestamp}</div>
-                <div className="post_cont_sum">
-                  {post.content.length > 200
-                    ? post.content.substring(0, 200) + "..."
-                    : post.content}
+              <div key={post.id} className="post_summary">
+                <div onClick={() => handlePostClick(post)}>
+                  <div className="post_title_sum">{post.title}</div>
+                  <div className="post_info">
+                    <div className="user_info">작성자 : {post.userName} | </div>
+                    <div className="post_skin">
+                      {" "}
+                      피부 타입 : {post.userSkinType} |{" "}
+                    </div>
+                    <div> 작성일 : {post.timestamp}</div>
+                  </div>
+                  <div className="post_cont_sum">
+                    {post.content.length > 200
+                      ? post.content.substring(0, 200) + "..."
+                      : post.content}
+                  </div>
                 </div>
-                <div className="post_skin">{post.userSkinType}</div>
-                <Like postId={post.id} postLikes={post.likes} />
+                <Like
+                  className="heart"
+                  postId={post.id}
+                  postLikes={post.likes}
+                />
               </div>
             );
           })}

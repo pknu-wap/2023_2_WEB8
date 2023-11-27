@@ -117,13 +117,27 @@ header {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.post_info {
+  display: flex;
+  width: fit-content;
+  background-color: rgba(230, 246, 239, 0.3);
+  border-radius: 3px;
+}
+
 .post_title_sum {
   font-size: 20px;
   font-weight: bold;
+  width: 100%;
+  display: flex;
 }
 
 .post_cont_sum {
   margin: 8px 0;
+}
+
+.heart {
+  width: fit-content;
+  cursor: pointer;
 }
 
 /* Modal */
