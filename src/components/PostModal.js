@@ -31,6 +31,13 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
             <div className="user_info">작성자 : {post.userName} | </div>
             <div className="post_skin">피부 타입 : {post.userSkinType} |</div>
             <div>작성일 : {post.timestamp}</div>
+            {isCurrentUserPost && (
+              <DeleteButton
+                postId={post.id}
+                post={post}
+                onDelete={handleDeletePost}
+              />
+            )}
           </div>
           <div className="post_cont_sum">{post.content}</div>
           <Like
@@ -39,13 +46,6 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
             user={currentUser}
           />
           <Comment postId={post.id} uid={post.uid} userName={userName} />
-          {isCurrentUserPost && (
-            <DeleteButton
-              postId={post.id}
-              post={post}
-              onDelete={handleDeletePost}
-            />
-          )}
         </div>
       </div>
     </div>

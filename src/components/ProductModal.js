@@ -18,12 +18,16 @@ const ProductModal = ({ isOpen, product, onClose }) => {
             &times;
           </span>
         </div>
-        <div className="modal-body">
-          <p>Brand: {Brand}</p>
-          <p>Price: {Price}$</p>
-          <p>Rank: {Rank}점</p>
-          <p>Ingredients: {Ingredients}</p>
-          <Review product={product} />
+        <div className="modal-split">
+          <div className="modal-body product-body">
+            <p>Brand: {Brand}</p>
+            <p>Price: {Price}$</p>
+            <p>Rank: {Rank}점</p>
+            <p>Ingredients: {Ingredients}</p>
+          </div>
+          <div className="review-body">
+            <Review product={product} />
+          </div>
         </div>
       </div>
     </div>

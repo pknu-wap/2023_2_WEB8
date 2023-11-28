@@ -95,7 +95,7 @@ const Comment = ({ postId, uid, userName }) => {
           );
         })}
       </ul>
-      <form>
+      <form className="comment-box">
         <input
           type="text"
           placeholder="댓글 작성..."

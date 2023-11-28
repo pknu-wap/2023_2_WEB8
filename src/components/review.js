@@ -95,7 +95,8 @@ const Review = ({ product }) => {
           </li>
         ))}
       </ul>
-      <form>
+
+      <form className="review-box">
         <select
           value={currentRating}
           onChange={(e) => setCurrentRating(Number(e.target.value))}
@@ -108,17 +109,18 @@ const Review = ({ product }) => {
           <option value={4}>4점</option>
           <option value={5}>5점</option>
         </select>
-        <input
-          type="text"
-          placeholder="후기를 작성해주세요."
-          value={currentReview}
-          onChange={(e) => setCurrentReview(e.target.value)}
-          className="review-input"
-        />
-
-        <button onClick={handleAddReview} className="submit-review-btn">
-          ↑
-        </button>
+        <div className="review-input-box">
+          <input
+            type="text"
+            placeholder="후기를 작성해주세요."
+            value={currentReview}
+            onChange={(e) => setCurrentReview(e.target.value)}
+            className="review-input"
+          />
+          <button onClick={handleAddReview} className="submit-review-btn">
+            ↑
+          </button>
+        </div>
       </form>
     </div>
   );
