@@ -23,7 +23,6 @@ function List(prop) {
               postId={post.id}
               postLikes={post.likes.length}
               uid={userInfo.uid}
-
             />
           </div>
         );
