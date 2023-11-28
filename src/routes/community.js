@@ -8,6 +8,7 @@ import useAuth from "../functions/useAuth";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
 import PostModal from "../components/PostModal.js";
+import Post from "../components/Post.js";
 
 const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
@@ -96,27 +97,12 @@ const Community = () => {
         <div className="post_list">
           {posts.map((post, index) => {
             return (
-              <div key={post.id} className="post_summary">
-                <div onClick={() => handlePostClick(post)}>
-                  <div className="post_title_sum">{post.title}</div>
-                  <div className="post_info">
-                    <div className="user_info">작성자 : {post.userName} | </div>
-                    <div className="post_skin">
-                      {" "}
-                      피부 타입 : {post.userSkinType} |{" "}
-                    </div>
-                    <div> 작성일 : {post.timestamp}</div>
-                  </div>
-                  <div className="post_cont_sum">
-                    {post.content.length > 200
-                      ? post.content.substring(0, 200) + "..."
-                      : post.content}
-                  </div>
-                </div>{" "}
+              <div key={index} className="post_summary">
+                <Post post={post} onClick={() => handlePostClick(post)} />
                 <Like
-                  className="heart"
                   postId={post.id}
-                  postLikes={post.likes}
+                  postLikes={post.likes.length}
+                  user={currentUser}
                 />
               </div>
             );

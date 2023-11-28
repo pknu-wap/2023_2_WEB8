@@ -1,30 +1,29 @@
-import Article from "./Article";
 import "../css/List.css";
+import Post from "./Post";
 import fetchPostsByUid from "../functions/fetchPostsByUid";
 import { useEffect, useState } from "react";
+import Like from "./Like";
 
 function List(prop) {
   const { title, userInfo } = prop;
-  const [articles, setArticles] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchPostsByUid(setArticles, userInfo, title);
+    fetchPostsByUid(setPosts, userInfo, title);
   }, [userInfo, title]);
 
   return (
     <div className="list-container">
       <h3 className="list-title">{title}</h3>
-      {articles.map((article) => {
+      {posts.map((post, index) => {
         return (
-          <div
-            key={article.id}
-            className="article-container"
-            style={{ cursor: "pointer" }}
-          >
-            <Article
-              key={article.id}
-              title={article.title}
-              content={article.content}
+          <div key={index} className="article-container">
+            <Post post={post} />
+            <Like
+              postId={post.id}
+              postLikes={post.likes.length}
+              uid={userInfo.uid}
+
             />
           </div>
         );

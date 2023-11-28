@@ -33,7 +33,11 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
             <div>작성일 : {post.timestamp}</div>
           </div>
           <div className="post_cont_sum">{post.content}</div>
-          <Like postId={post.id} postLikes={post.likes} style />
+          <Like
+            postId={post.id}
+            postLikes={post.likes.length}
+            user={currentUser}
+          />
           <Comment postId={post.id} uid={post.uid} userName={userName} />
           {isCurrentUserPost && (
             <DeleteButton
