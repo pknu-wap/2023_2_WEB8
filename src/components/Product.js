@@ -3,6 +3,10 @@ import LabelBtn from "./LabelBtn";
 import "../css/Product.css";
 import ProductModal from "./ProductModal";
 
+function truncateText(text, maxLength) {
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+}
+
 function Product({ productInfo, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { Name, Price, Rank, id } = productInfo;
@@ -23,11 +27,10 @@ function Product({ productInfo, uid }) {
             <img src="./images/community.png" alt="LOGO" />
           </div>
           <div className="product-info">
-            <div className="product-name">{Name}</div>
+            <div className="product-name">{truncateText(Name, 30)}</div>
             <div className="product-price">{Price}$</div>
             <div className="product-rank">{Rank}점</div>
           </div>
-
         </div>
         <LabelBtn productId={id} productName={Name} userId={uid} />
       </div>

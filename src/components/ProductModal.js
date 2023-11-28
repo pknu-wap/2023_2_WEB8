@@ -23,8 +23,8 @@ const ProductModal = ({ isOpen, product, onClose }) => {
           <p>Price: {Price}$</p>
           <p>Rank: {Rank}점</p>
           <p>Ingredients: {Ingredients}</p>
+          <Review product={product} />
         </div>
-        <Review product={product} />
       </div>
     </div>
   );

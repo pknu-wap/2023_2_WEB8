@@ -176,6 +176,7 @@ header {
   max-height: calc(
     100vh - 120px
   ); /* 모달의 높이에서 헤더와 푸터의 높이를 빼고 나머지 공간만큼 허용 */
+  padding: 5px;
 }
 
 .modal-body textarea {

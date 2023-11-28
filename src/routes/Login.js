@@ -34,6 +34,7 @@ const RegistrationForm = () => {
 
         //로그인 성공 시, 무조건 main 화면으로 감.
         navigate(`${process.env.PUBLIC_URL}/main`);
+
       })
       .catch((error) => {
         const errorCode = error.code;

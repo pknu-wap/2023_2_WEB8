@@ -16,7 +16,11 @@ function List(prop) {
       <h3 className="list-title">{title}</h3>
       {articles.map((article) => {
         return (
-          <div key={article.id} className="article-container">
+          <div
+            key={article.id}
+            className="article-container"
+            style={{ cursor: "pointer" }}
+          >
             <Article
               key={article.id}
               title={article.title}
