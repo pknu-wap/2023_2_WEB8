@@ -30,7 +30,11 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
           <div className="post_skin">{post.userSkinType}</div>
           <div>{post.timestamp}</div>
           <div className="post_cont_sum">{post.content}</div>
-          <Like postId={post.id} postLikes={post.likes} style />
+          <Like
+            postId={post.id}
+            postLikes={post.likes.length}
+            user={currentUser}
+          />
           <Comment postId={post.id} uid={post.uid} userName={userName} />
           {isCurrentUserPost && (
             <DeleteButton

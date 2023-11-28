@@ -8,6 +8,7 @@ import useAuth from "../functions/useAuth";
 import createPostInFirestore from "../functions/createPostInFirestore.js";
 import fetchPosts from "../functions/fetchPosts.js";
 import PostModal from "../components/PostModal.js";
+import Post from "../components/Post.js";
 
 const Community = () => {
   const [isCreateModalVisible, setCreateModalVisible] = useState(false);
@@ -96,21 +97,13 @@ const Community = () => {
         <div className="post_list">
           {posts.map((post, index) => {
             return (
-              <div
-                key={index}
-                className="post_summary"
-                onClick={() => handlePostClick(post)}
-              >
-                <div className="post_title_sum">{post.title}</div>
-                <div className="user_info">{post.userName}</div>
-                <div>{post.timestamp}</div>
-                <div className="post_cont_sum">
-                  {post.content.length > 200
-                    ? post.content.substring(0, 200) + "..."
-                    : post.content}
-                </div>
-                <div className="post_skin">{post.userSkinType}</div>
-                <Like postId={post.id} postLikes={post.likes} />
+              <div key={index} className="post_summary">
+                <Post post={post} onClick={() => handlePostClick(post)} />
+                <Like
+                  postId={post.id}
+                  postLikes={post.likes.length}
+                  user={currentUser}
+                />
               </div>
             );
           })}
