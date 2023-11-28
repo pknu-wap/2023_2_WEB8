@@ -14,7 +14,7 @@ function MyPage() {
   const navigate = useNavigate();
 
   if (currentUser == null) {
-    return <div>Please log in.</div>;
+    return <div>Loding...</div>;
   }
 
   const handleEdit = () => {
