@@ -39,6 +39,7 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
         Label: product.Label,
         Rank: product.Rank,
         Price: product.Price,
+        Ingredients: product.Ingredients,
       });
     });
 
