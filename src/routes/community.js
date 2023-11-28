@@ -112,8 +112,7 @@ const Community = () => {
                       ? post.content.substring(0, 200) + "..."
                       : post.content}
                   </div>
-                </div>
-                <div className="post_skin">{post.userSkinType}</div>
+                </div>{" "}
                 <Like
                   className="heart"
                   postId={post.id}

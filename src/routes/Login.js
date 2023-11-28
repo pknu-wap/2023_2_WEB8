@@ -29,7 +29,6 @@ const RegistrationForm = () => {
           .catch((error) => {
             console.error("로그인 상태 지속성 설정 실패:", error);
           });
-
         navigate(-1);
       })
       .catch((error) => {

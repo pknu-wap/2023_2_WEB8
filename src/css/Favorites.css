@@ -1,0 +1,16 @@
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  height: 120%;
+}
+
+.favorites-container div {
+  height: 100%;
+}
+
+.favorites-product {
+  display: flex;
+  width: 25%;
+  height: 100%;
+}
