@@ -171,6 +171,18 @@ header {
   cursor: pointer;
 }
 
+.delete-btn {
+  background-color: rgba(140, 128, 128, 0.174);
+  margin-left: 54%;
+  margin-top: 2px;
+  border: none;
+  border-bottom: black;
+  width: 9%;
+  height: 10%;
+  cursor: pointer;
+  font-size: 13px;
+}
+
 .modal-body {
   overflow-y: auto; /* 내용이 모달의 높이를 벗어나면 스크롤 허용 */
   max-height: calc(

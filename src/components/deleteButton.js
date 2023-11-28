@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import deletePostInFirestore from "../functions/deletePost";
 import useAuth from "../functions/useAuth";
+import "../css/community_style.css";
 
 const DeleteButton = ({ postId, post, onDelete }) => {
   const [isDeleted, setDeleted] = useState(false);
@@ -27,7 +28,9 @@ const DeleteButton = ({ postId, post, onDelete }) => {
 
   // 현재 사용자가 게시물의 작성자인 경우에만 삭제 버튼을 표시
   return isCurrentUserPost ? (
-    <button onClick={handleDeletePost}>게시물 삭제</button>
+    <button className="delete-btn" onClick={handleDeletePost}>
+      게시물 삭제
+    </button>
   ) : null;
 };
 
