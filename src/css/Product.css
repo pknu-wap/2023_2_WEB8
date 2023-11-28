@@ -15,20 +15,19 @@
 
 .product {
   display: flex;
-  height: max-content;
+  height: 95%;
 }
 
 .product-list {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding: 10px 90px;
+  padding: 2px 90px;
   animation: fadeInUp 0.5s ease-in-out;
 }
 
 .products {
   width: 20%;
-  padding: 10px 0;
 }
 
 .product-container {
@@ -40,10 +39,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   text-align: center;
   animation: fadeInUp 0.5s ease-in-out;
   cursor: pointer;
+}
+
+.product-image {
+  display: flex;
+  margin-bottom: 2px;
 }
 
 .product-image img {

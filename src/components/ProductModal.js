@@ -6,7 +6,8 @@ const ProductModal = ({ isOpen, product, onClose }) => {
   if (!isOpen || !product) {
     return null;
   }
-  const { Name, Price, Rank } = product;
+  const { Name, Price, Rank, Brand, Ingredients } = product;
+  // console.log(Ingredients);
 
   return (
     <div className="modal" style={{ display: isOpen ? "block" : "none" }}>
@@ -18,10 +19,12 @@ const ProductModal = ({ isOpen, product, onClose }) => {
           </span>
         </div>
         <div className="modal-body">
+          <p>Brand: {Brand}</p>
           <p>Price: {Price}$</p>
           <p>Rank: {Rank}점</p>
+          <p>Ingredients: {Ingredients}</p>
+          <Review product={product} />
         </div>
-        <Review product={product} />
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import useAuth from "../functions/useAuth";
 import Navbars2 from "../components/Navbars2";
 import "../css/MyPage.css";
 import { useNavigate } from "react-router-dom";
+import "../css/Favorites.css";
 
 function MyPage() {
   const [navButton, setNavButton] = useState(0);

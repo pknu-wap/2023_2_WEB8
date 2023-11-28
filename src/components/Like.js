@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +9,7 @@ import { db } from "../firebase";
 const Like = ({ postId, postLikes, user }) => {
   const [liked, setLiked] = useState(false);
   const [likedNum, setLikedNum] = useState(postLikes);
+  const navigate = useNavigate();
 
   const LikedFunc = async (postId, liked) => {
     // Firestore에서 해당 게시물의 정보 가져오기
@@ -63,9 +65,11 @@ const Like = ({ postId, postLikes, user }) => {
     if (user) {
       LikedFunc(postId, !liked);
       setLiked(!liked);
-    } else alert("로그인이 필요한 서비스입니다.");
-
-    //setLiked가 비동기적으로 수행하기 때문에 그에 맞게 작성됨
+    } else {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate(`${process.env.PUBLIC_URL}/login`);
+      return;
+    }
   };
 
   return (
