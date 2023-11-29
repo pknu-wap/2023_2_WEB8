@@ -1,0 +1,20 @@
+.label-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, #9ed2be, 0.5);
+  color: rgba(118, 111, 111, 0.972);
+  padding: 8px 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.label-btn.active {
+  /* 별모양 스타일 (예: 별 아이콘 추가) */
+  color: rgb(249, 216, 27); /* 별모양 색상으로 변경 */
+}

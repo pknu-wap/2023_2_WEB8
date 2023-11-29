@@ -3,6 +3,9 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import useAuth from "../functions/useAuth";
 import { useNavigate } from "react-router-dom";
+import "../css/LabelBtn.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const LabelBtn = (props) => {
   //false부분을 현재 사용자가 즐찾했는지에 따라
@@ -82,8 +85,12 @@ const LabelBtn = (props) => {
   };
   return (
     <div>
-      <button className="label-btn" onClick={handleFavorite}>
-        {isFavorited ? "Unfavorite" : "Favorite"}
+      <button
+        className={`label-btn ${isFavorited ? "active" : ""}`}
+        onClick={handleFavorite}
+      >
+        <FontAwesomeIcon icon={faStar} />
+        {/* {isFavorited ? "Unfavorite" : "Favorite"} */}
       </button>
     </div>
   );
