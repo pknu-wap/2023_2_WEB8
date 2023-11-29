@@ -16,6 +16,11 @@ const fetchFavorProducts = async (setProducts, userid) => {
     if (userSnapshot.exists()) {
       const favorites = userSnapshot.data().favorites || [];
 
+      if (favorites.length === 0) {
+        setProducts([]);
+        return;
+      }
+
       const productQuery = query(
         collection(db, "Products"),
         where("Name", "in", favorites)

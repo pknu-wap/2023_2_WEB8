@@ -13,9 +13,9 @@ function Favorites({ userInfo }) {
 
   return (
     <div className="favorites-container">
-      {products.map((product) => {
+      {products.map((product, index) => {
         return (
-          <div key={product.id} className="favorites-product">
+          <div key={index} className="favorites-product">
             <Product productInfo={product} uid={userInfo.uid} />
           </div>
         );
