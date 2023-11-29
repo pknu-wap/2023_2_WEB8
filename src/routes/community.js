@@ -100,6 +100,8 @@ const Community = () => {
               <div key={index} className="post_summary">
                 <Post post={post} onClick={() => handlePostClick(post)} />
                 <Like
+                  isUpdate={isUpdate}
+                  setIsUpdate={setIsUpdate}
                   postId={post.id}
                   postLikes={post.likes.length}
                   user={currentUser}
@@ -110,6 +112,7 @@ const Community = () => {
         </div>
 
         <PostModal
+          isUpdate={isUpdate}
           setIsUpdate={setIsUpdate}
           currentUser={currentUser}
           post={selectedPost}

@@ -3,7 +3,14 @@ import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
 import "../css/community_style.css";
 
-const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
+const PostModal = ({
+  post,
+  onClose,
+  currentUser,
+  isVisible,
+  isUpdate,
+  setIsUpdate,
+}) => {
   if (!post || !isVisible) {
     return null;
   }
@@ -39,6 +46,8 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
           </div>
           <div className="post_cont_sum">{post.content}</div>
           <Like
+            isUpdate={isUpdate}
+            setIsUpdate={setIsUpdate}
             postId={post.id}
             postLikes={post.likes.length}
             user={currentUser}
