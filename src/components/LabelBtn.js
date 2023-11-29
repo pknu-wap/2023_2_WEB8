@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import useAuth from "../functions/useAuth";
@@ -11,6 +11,22 @@ const LabelBtn = (props) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const currentUser = useAuth(); // Firebase auth context에서 현재 사용자 정보 가져오기
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchIsFavorite();
+  }, []);
+
+  const fetchIsFavorite = async () => {
+    if (userId) {
+      const userRef = doc(db, "Users", userId);
+      const userSnapshot = await getDoc(userRef);
+
+      if (userSnapshot.exists()) {
+        const userFavoriteProducts = userSnapshot.data().favorites || [];
+        setIsFavorited(userFavoriteProducts.includes(productName));
+      }
+    }
+  };
 
   const handleFavorite = async () => {
     try {
@@ -28,7 +44,7 @@ const LabelBtn = (props) => {
       if (userDoc.exists()) {
         const userFavorites = userDoc.data().favorites || [];
 
-        if (!isFavorited) {
+        if (!isFavorited && !userFavorites.includes(productName)) {
           userFavorites.push(productName);
         } else {
           const index = userFavorites.indexOf(productName);

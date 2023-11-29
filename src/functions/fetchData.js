@@ -32,10 +32,9 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
         imageURL = await getDownloadURL(
           ref(storage, `products_image/${product.Name + ".jpeg"}`)
         );
-        console.log("success: ", imageURL);
       } catch (error) {
         console.log("No img in product >>> ", error);
-        imageURL = "/images/5.jpg";
+        imageURL = "";
         console.log("error imageURL: ", imageURL);
       }
 
