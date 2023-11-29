@@ -9,19 +9,34 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import useAuth from "../functions/useAuth";
 import formatTime from "../functions/formatTime";
+import { useNavigate } from "react-router-dom";
 
 const Comment = ({ postId, uid, user }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [isUpdate, setIsUpdate] = useState(true);
+  const navigate = useNavigate();
+
+  const currentUser = useAuth(); // Firebase auth context에서 현재 사용자 정보 가져오기
 
   //실시간 업데이트를 위한 state
   //버튼을 클릭할때 변경되도록 함
   //=> useEffect의 의존성배열에 넣음 => 버튼을 클릭할 때마다 fetch함
-  const [isUpdate, setIsUpdate] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!currentUser) {
+      // 비로그인 상태에서는 로그인이 필요하다는 메시지를 띄우고 로그인 화면으로 이동
+      alert("로그인이 필요한 서비스입니다.");
+      // 로그인 화면으로 이동하는 코드
+      navigate(`${process.env.PUBLIC_URL}/login`);
+
+      return;
+    }
+
     if (!newComment) {
       alert("내용을 입력하세요");
     } else {
