@@ -1,10 +1,15 @@
 import { db } from "../firebase";
-import { collection, where, getDocs, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  where,
+  getDocs,
+  query,
+  orderBy,
+  collectionGroup,
+} from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
-  //userUid를 사용하는 경우와 skinType을 사용하는 경우를 처리해야함
-  //userUid -> mypage, skinType -> main페이지
   try {
     let q = collection(db, "Products");
 
@@ -12,13 +17,12 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
 
     if (skinType) q = query(q, where(skinType, "==", 1));
 
+    let orderByField = "Rank"; // Default orderBy field
+
     if (orderCriteria === "lowest-price") {
-      q = query(q, orderBy("Price"));
+      orderByField = "Price";
     } else if (orderCriteria === "highest-price") {
-      q = query(q, orderBy("Price", "desc"));
-    } else if (orderCriteria === "favorites") {
-      // 기본적으로 orderBy Rank & favorites 으로 설정
-      q = query(q, orderBy("favorites", "desc"));
+      orderByField = "Price";
     }
 
     const querySnapshot = await getDocs(q);
@@ -51,6 +55,24 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
     });
 
     const productData = await Promise.all(productPromises);
+
+    // Sort the data if orderByField is "favorites"
+    if (orderCriteria === "favorites") {
+      productData.sort((a, b) => {
+        // If "favorites" field is absent, consider it as a lower value
+        const aValue = a.hasOwnProperty("favorites")
+          ? a.favorites
+          : Number.MIN_SAFE_INTEGER;
+        const bValue = b.hasOwnProperty("favorites")
+          ? b.favorites
+          : Number.MIN_SAFE_INTEGER;
+
+        return bValue - aValue;
+      });
+    } else {
+      // Default orderBy based on orderByField
+      productData.sort((a, b) => a[orderByField] - b[orderByField]);
+    }
 
     setProducts(productData);
   } catch (error) {
