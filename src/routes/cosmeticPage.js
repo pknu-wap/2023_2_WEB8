@@ -9,7 +9,8 @@ function CosmeticLanking() {
   const user = useAuth();
   const [userSkinType, setUserSkinType] = useState("");
   const [userId, setUserId] = useState("");
-  const [order, setOrder] = useState("popular");
+  const [order, setOrder] = useState("Rank");
+
   const handleSelectChange = (event) => {
     setOrder(event.target.value);
   };
