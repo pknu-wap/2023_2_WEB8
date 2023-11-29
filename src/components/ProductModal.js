@@ -20,6 +20,7 @@ const ProductModal = ({ isOpen, product, onClose }) => {
         </div>
         <div className="modal-split">
           <div className="modal-body product-body">
+            <div className="product-image"></div>
             <p>Brand: {Brand}</p>
             <p>Price: {Price}$</p>
             <p>Rank: {Rank}점</p>
