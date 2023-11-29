@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../functions/useAuth";
+import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import {
   addDoc,
@@ -16,6 +17,7 @@ const Review = ({ product }) => {
   const [currentReview, setCurrentReview] = useState("");
   const [currentRating, setCurrentRating] = useState(0);
   const user = useAuth();
+  const navigate = useNavigate();
 
   //실시간 업데이트를 위한 state
   //버튼을 클릭할때 변경되도록 함
@@ -24,6 +26,13 @@ const Review = ({ product }) => {
 
   const handleAddReview = (e) => {
     e.preventDefault();
+
+    if (!user) {
+      // If the user is not logged in, display an alert or take other appropriate action
+      alert("로그인이 필요한 서비스입니다.");
+      navigate(`${process.env.PUBLIC_URL}/login`);
+      return;
+    }
 
     if (!currentReview) {
       alert("내용을 입력하세요");

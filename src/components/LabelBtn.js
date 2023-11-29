@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import useAuth from "../functions/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const LabelBtn = (props) => {
   //false부분을 현재 사용자가 즐찾했는지에 따라
   //2. 데이터 필드를 통해 마이페이지 연결
   const { productName, userId, productId } = props;
   const [isFavorited, setIsFavorited] = useState(false);
+  const currentUser = useAuth(); // Firebase auth context에서 현재 사용자 정보 가져오기
+  const navigate = useNavigate();
 
   const handleFavorite = async () => {
     try {
+      if (!currentUser) {
+        // 비로그인 상태에서는 로그인이 필요하다는 메시지를 띄우고 로그인 화면으로 이동
+        alert("로그인이 필요한 서비스입니다.");
+        // 로그인 화면으로 이동하는 코드
+        navigate(`${process.env.PUBLIC_URL}/login`);
+        return;
+      }
       //User Data Field Update
       const userRef = doc(db, "Users", userId);
       const userDoc = await getDoc(userRef);
