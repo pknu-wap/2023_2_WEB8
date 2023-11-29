@@ -67,12 +67,6 @@ function CosmeticLanking() {
             <option value="lowest-price">낮은 가격순</option>
             <option value="highest-price">높은 가격순</option>
           </select>
-          <div className="search-area">
-            {/*             <form>
-              <input type="search" placeholder="검색"></input>
-              <span>검색</span>
-            </form> */}
-          </div>
         </div>
         <ShowProducts
           skinType={userSkinType}
