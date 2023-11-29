@@ -1,4 +1,3 @@
-import React from "react";
 import Like from "./Like";
 import Comment from "./Comment";
 import DeleteButton from "./deleteButton";
@@ -9,8 +8,7 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
     return null;
   }
 
-  const userName = currentUser.userName;
-  const isCurrentUserPost = post.uid === currentUser.uid;
+  const isCurrentUserPost = currentUser && post.uid === currentUser.uid;
 
   const handleDeletePost = () => {
     setIsUpdate((prev) => !prev);
@@ -45,7 +43,7 @@ const PostModal = ({ post, onClose, currentUser, isVisible, setIsUpdate }) => {
             postLikes={post.likes.length}
             user={currentUser}
           />
-          <Comment postId={post.id} uid={post.uid} userName={userName} />
+          <Comment postId={post.id} uid={post.uid} user={currentUser} />
         </div>
       </div>
     </div>

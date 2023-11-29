@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import formatTime from "../functions/formatTime";
 
-const Comment = ({ postId, uid, userName }) => {
+const Comment = ({ postId, uid, user }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
@@ -40,7 +40,7 @@ const Comment = ({ postId, uid, userName }) => {
       await addDoc(collection(db, "Comments"), {
         postId: postId,
         userId: uid,
-        userName: userName,
+        userName: user.userName,
         content: newComment,
         timestamp: new Date(),
       });

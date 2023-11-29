@@ -41,7 +41,7 @@ const Community = () => {
       alert("게시글 내용을 입력해주세요.");
       return; // 함수 종료
     }
-    console.log("HI");
+
     const newPost = { title: postTitle, content: postContent };
     await createPostInFirestore(currentUser, newPost); // 포스트를 파이어베이스에 등록함
 
