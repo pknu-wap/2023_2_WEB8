@@ -94,20 +94,3 @@
   position: relative;
   display: inline-block; /* 부모 요소를 인라인 블록 요소로 설정 */
 }
-
-.label-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: rgba(0, 0, #9ed2be, 0.5);
-  color: black;
-  padding: 5px 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-}
-
-.label-btn:hover {
-  background-color: #7eaa92;
-}
