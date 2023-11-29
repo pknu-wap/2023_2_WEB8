@@ -53,8 +53,8 @@
 
 .product-image img {
   display: flex;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   margin-bottom: 10px;
 }
 
@@ -89,7 +89,6 @@
 }
 
 /* LabelBtn.css */
-
 .label-btn-container {
   position: relative;
   display: inline-block; /* 부모 요소를 인라인 블록 요소로 설정 */
