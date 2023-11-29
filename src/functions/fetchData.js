@@ -1,6 +1,6 @@
 import { db } from "../firebase";
 import { collection, where, getDocs, query, orderBy } from "firebase/firestore";
-//import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
   //userUid를 사용하는 경우와 skinType을 사용하는 경우를 처리해야함
@@ -22,17 +22,24 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
     }
 
     const querySnapshot = await getDocs(q);
-    //const storage = getStorage();
+    const storage = getStorage();
 
-    const productData = [];
-
-    querySnapshot.forEach((doc) => {
+    const productPromises = querySnapshot.docs.map(async (doc) => {
       const product = doc.data();
-      // const imageURL = await getDownloadURL(
-      //   ref(storage, `products/${product.id + ".jpg"}`)
-      // );
+      let imageURL = "";
 
-      productData.push({
+      try {
+        imageURL = await getDownloadURL(
+          ref(storage, `products_image/${product.Name + ".jpeg"}`)
+        );
+        console.log("success: ", imageURL);
+      } catch (error) {
+        console.log("No img in product >>> ", error);
+        imageURL = "/images/5.jpg";
+        console.log("error imageURL: ", imageURL);
+      }
+
+      return {
         id: doc.id,
         Brand: product.Brand,
         Name: product.Name,
@@ -40,8 +47,11 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
         Rank: product.Rank,
         Price: product.Price,
         Ingredients: product.Ingredients,
-      });
+        imgURL: imageURL,
+      };
     });
+
+    const productData = await Promise.all(productPromises);
 
     setProducts(productData);
   } catch (error) {
