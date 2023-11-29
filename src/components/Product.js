@@ -9,7 +9,7 @@ function truncateText(text, maxLength) {
 
 function Product({ productInfo, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { Name, Price, Rank, id } = productInfo;
+  const { Name, Price, Rank, id, imgURL } = productInfo;
 
   const handleProductClick = () => {
     setIsModalOpen(true);
@@ -24,7 +24,7 @@ function Product({ productInfo, uid }) {
       <div key={id} className="product-container">
         <div onClick={handleProductClick}>
           <div className="product-image">
-            <img src="./images/community.png" alt="LOGO" />
+            <img src={imgURL} alt="LOGO" />
           </div>
           <div className="product-info">
             <div className="product-name">{truncateText(Name, 30)}</div>
