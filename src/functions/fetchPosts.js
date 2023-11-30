@@ -7,14 +7,12 @@ const fetchPosts = async (setPosts) => {
     const q = query(collection(db, "Posts"), orderBy("timestamp", "desc"));
     const querySnapshot = await getDocs(q);
 
-    const postsData = [];
-
-    querySnapshot.forEach((doc) => {
+    const postPromises = querySnapshot.docs.map((doc) => {
       const post = doc.data();
       const milliTime = post.timestamp;
       const createdTime = formatTime(milliTime);
 
-      postsData.push({
+      return {
         id: post.id,
         timestamp: createdTime,
         uid: post.userid,
@@ -23,9 +21,10 @@ const fetchPosts = async (setPosts) => {
         userName: post.userName,
         userSkinType: post.userSkinType,
         likes: post.likes || 0,
-      });
+      };
     });
 
+    const postsData = await Promise.all(postPromises);
     setPosts(postsData);
   } catch (error) {
     console.log("Error in fetching Posts  <<<  ", error);
