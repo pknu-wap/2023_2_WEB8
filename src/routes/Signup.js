@@ -70,6 +70,7 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
+      <p className="password-limit">비밀번호는 6자 이상 설정해 주세요.</p>
       <label htmlFor="username">사용자명:</label>
       <input
         className="signup-input"

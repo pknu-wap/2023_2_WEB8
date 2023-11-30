@@ -28,6 +28,11 @@
   }
 }
 
+.password-limit {
+  font-size: 14px;
+  color: rgba(40, 40, 40, 0.719);
+}
+
 .signup-form {
   max-width: 400px;
   margin: 0 auto;
