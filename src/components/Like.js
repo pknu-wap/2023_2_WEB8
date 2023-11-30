@@ -25,14 +25,15 @@ const Like = ({ postId, postLikes, user, isUpdate, setIsUpdate }) => {
         const userLikedPosts = userSnapshot.data().likes || [];
         setLiked(userLikedPosts.includes(postId));
       }
+      if (typeof postId === "string") {
+        const docRef = doc(db, "Posts", postId);
+        const snapshot = await getDoc(docRef);
 
-      const docRef = doc(db, "Posts", postId);
-      const snapshot = await getDoc(docRef);
-
-      if (snapshot.exists()) {
-        const postData = snapshot.data();
-        const postLike = postData.likes || [];
-        setLikedNum(postLike.length);
+        if (snapshot.exists()) {
+          const postData = snapshot.data();
+          const postLike = postData.likes || [];
+          setLikedNum(postLike.length);
+        }
       }
     }
   };
@@ -74,7 +75,6 @@ const Like = ({ postId, postLikes, user, isUpdate, setIsUpdate }) => {
       const userLike = userDoc.data().likes || [];
 
       if (liked && !userLike.includes(postId)) {
-        console.log("oh");
         userLike.push(postId);
       } else {
         const index = userLike.indexOf(postId);
@@ -82,7 +82,7 @@ const Like = ({ postId, postLikes, user, isUpdate, setIsUpdate }) => {
           userLike.splice(index, 1);
         }
       }
-      console.log("i");
+
       await updateDoc(userRef, { likes: userLike });
     }
   };

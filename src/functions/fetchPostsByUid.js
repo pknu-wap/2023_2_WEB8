@@ -8,8 +8,9 @@ import {
 } from "@firebase/firestore";
 import formatTime from "./formatTime";
 
-const fetchPosts = async (setPosts, userInfo, title) => {
+const fetchPostsByUid = async (setPosts, userInfo, title) => {
   const uid = userInfo.uid;
+
   try {
     const q = query(
       collection(db, title),
@@ -18,29 +19,28 @@ const fetchPosts = async (setPosts, userInfo, title) => {
     );
     const querySnapshot = await getDocs(q);
 
-    const postsData = [];
-
-    querySnapshot.forEach((doc) => {
+    const postPromises = querySnapshot.docs.map((doc) => {
       const post = doc.data();
       const milliTime = post.timestamp;
       const createdTime = formatTime(milliTime);
 
-      postsData.push({
-        id: post.id,
+      return {
+        id: post.id || post,
         timestamp: createdTime,
-        uid: post.uid,
+        uid: post.userid,
         title: post.title,
         content: post.content,
         userName: post.userName,
-        userSkinType: post.userSkinType,
+        userSkinType: post.userSkinType || "",
         likes: post.likes || 0,
-      });
+      };
     });
 
+    const postsData = await Promise.all(postPromises);
     setPosts(postsData);
   } catch (error) {
-    console.log("Error in fetching Posts  <<<  ", error);
+    console.log("Error in fetching Posts 2  <<<  ", error);
   }
 };
 
-export default fetchPosts;
+export default fetchPostsByUid;
