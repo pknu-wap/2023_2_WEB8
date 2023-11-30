@@ -52,7 +52,6 @@ const Signup = () => {
       <label htmlFor="email">이메일:</label>
       <input
         className="signup-input"
-        placeholder="test@example.com"
         type="email"
         id="email"
         name="email"
