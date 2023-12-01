@@ -1,12 +1,5 @@
 import { db } from "../firebase";
-import {
-  collection,
-  where,
-  getDocs,
-  query,
-  orderBy,
-  collectionGroup,
-} from "firebase/firestore";
+import { collection, where, getDocs, query, orderBy } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
@@ -59,7 +52,6 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
     // Sort the data if orderByField is "favorites"
     if (orderCriteria === "favorites") {
       productData.sort((a, b) => {
-        // If "favorites" field is absent, consider it as a lower value
         const aValue = a.hasOwnProperty("favorites")
           ? a.favorites
           : Number.MIN_SAFE_INTEGER;
@@ -70,8 +62,11 @@ const fetchData = async (setProducts, { skinType, userid, orderCriteria }) => {
         return bValue - aValue;
       });
     } else {
-      // Default orderBy based on orderByField
       productData.sort((a, b) => a[orderByField] - b[orderByField]);
+    }
+
+    if (orderByField === "Price" && orderCriteria === "highest-price") {
+      productData.reverse();
     }
 
     setProducts(productData);
