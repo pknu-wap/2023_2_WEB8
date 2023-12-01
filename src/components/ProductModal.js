@@ -19,7 +19,7 @@ const ProductModal = ({ isOpen, product, onClose }) => {
         </div>
         <div className="modal-split">
           <div className="modal-body product-body">
-            <div className="product-image">
+            <div className="productModal-image">
               <img src={imgURL} alt="product-img" />
             </div>
             <p>Brand: {Brand}</p>

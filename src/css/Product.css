@@ -88,6 +88,29 @@
   justify-content: center;
 }
 
+/* .product-info-div {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.product-info {
+  display: flex;
+  width: 70%;
+  height: 100%;
+} */
+
+.productModal-image {
+  display: flex;
+  height: fit-content;
+}
+
+.productModal-image img {
+  display: flex;
+  width: 35%;
+  height: 100%;
+}
+
 /* LabelBtn.css */
 .label-btn-container {
   position: relative;

@@ -10,7 +10,6 @@ function truncateText(text, maxLength) {
 function Product({ productInfo, uid }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { Name, Price, Rank, id, imgURL } = productInfo;
-  console.log("hi", productInfo);
   const handleProductClick = () => {
     setIsModalOpen(true);
   };
