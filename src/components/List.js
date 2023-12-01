@@ -15,13 +15,15 @@ function List(prop) {
 
   useEffect(() => {
     fetchPostsByUid(setPosts, userInfo, title);
-  }, [userInfo, title]);
+  }, [userInfo, title, isUpdate]);
 
   const [selectedPost, setSelectedPost] = useState(null);
 
   const handlePostClick = (post) => {
-    setSelectedPost(post);
-    setDetailModalVisible(true); // 게시물 클릭 시 모달 열기
+    if (title === "Posts") {
+      setSelectedPost(post);
+      setDetailModalVisible(true); // 게시물 클릭 시 모달 열기
+    }
   };
 
   const closeModal = () => {
@@ -41,12 +43,16 @@ function List(prop) {
             style={{ cursor: "pointer" }}
           >
             <Post post={post} />
-            <Like
-              postId={post.id}
-              postLikes={post.likes.length}
-              uid={userInfo.uid}
-              user={currentUser}
-            />
+            {title == "Posts" ? (
+              <Like
+                postId={post.id}
+                postLikes={post.likes.length}
+                uid={userInfo.uid}
+                user={currentUser}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         );
       })}

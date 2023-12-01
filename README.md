@@ -57,3 +57,6 @@ MY PAGE에서는 내가 쓴 제품을 기록해서 한 눈에 볼 수 있는 기
     2. 비밀번호
     3. 닉네임
     4. 피부타입 (건성,지성,중성,모름)
+  
+# 배포
+https://main--skinfor.netlify.app/main
