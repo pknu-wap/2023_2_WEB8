@@ -34,7 +34,6 @@ const RegistrationForm = () => {
 
         //로그인 성공 시, 무조건 main 화면으로 감.
         navigate(`${process.env.PUBLIC_URL}/main`);
-
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -75,6 +74,14 @@ const RegistrationForm = () => {
         <button id="loginButton" onClick={handleLogin}>
           Login
         </button>
+        <div className="sign_div">
+          <button
+            className="sign_button"
+            onClick={() => navigate(`${process.env.PUBLIC_URL}/signup`)}
+          >
+            Sign up
+          </button>
+        </div>
 
         {/* showError가 true이면 페이드인 애니메이션 효과를 주어 메시지를 표시 */}
         {showError && (
