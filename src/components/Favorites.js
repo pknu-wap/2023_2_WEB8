@@ -5,18 +5,24 @@ import "../css/Favorites.css";
 
 function Favorites({ userInfo }) {
   const [products, setProducts] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(true);
   const userid = userInfo.uid;
 
   useEffect(() => {
     fetchFavorProducts(setProducts, userid);
-  }, [userid]);
+  }, [userid, isUpdate]);
 
   return (
     <div className="favorites-container">
       {products.map((product, index) => {
         return (
           <div key={index} className="favorites-product">
-            <Product productInfo={product} uid={userInfo.uid} />
+            <Product
+              productInfo={product}
+              uid={userInfo.uid}
+              isUpdate={isUpdate}
+              setIsUpdate={setIsUpdate}
+            />
           </div>
         );
       })}

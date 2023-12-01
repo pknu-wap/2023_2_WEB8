@@ -10,7 +10,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const LabelBtn = (props) => {
   //false부분을 현재 사용자가 즐찾했는지에 따라
   //2. 데이터 필드를 통해 마이페이지 연결
-  const { productName, userId, productId } = props;
+  const { productName, userId, productId, isUpdate, setIsUpdate } = props;
   const [isFavorited, setIsFavorited] = useState(false);
   const currentUser = useAuth(); // Firebase auth context에서 현재 사용자 정보 가져오기
   const navigate = useNavigate();
@@ -78,6 +78,7 @@ const LabelBtn = (props) => {
         }
         //setState가 맨 마지막에 실행되도록
         setIsFavorited(!isFavorited);
+        if (isUpdate) setIsUpdate(!isUpdate);
       }
     } catch (error) {
       console.error("Error in LabelBtn: ", error);

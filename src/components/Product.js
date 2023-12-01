@@ -7,7 +7,7 @@ function truncateText(text, maxLength) {
   return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }
 
-function Product({ productInfo, uid }) {
+function Product({ productInfo, uid, isUpdate, setIsUpdate }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { Name, Price, Rank, id, imgURL } = productInfo;
   const handleProductClick = () => {
@@ -31,7 +31,13 @@ function Product({ productInfo, uid }) {
             <div className="product-rank">{Rank}점</div>
           </div>
         </div>
-        <LabelBtn productId={id} productName={Name} userId={uid} />
+        <LabelBtn
+          productId={id}
+          productName={Name}
+          userId={uid}
+          isUpdate={isUpdate}
+          setIsUpdate={setIsUpdate}
+        />
       </div>
 
       <ProductModal
