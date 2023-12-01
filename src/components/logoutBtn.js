@@ -11,10 +11,10 @@ const LogoutBtn = () => {
         console.log("사용자가 로그아웃했습니다.");
         alert("로그아웃 했습니다.");
 
-        window.location.reload();
-
         if (window.location.pathname.includes("mypage")) {
           navigate(`${process.env.PUBLIC_URL}/main`);
+        } else {
+          window.location.reload();
         }
       })
       .catch((error) => {
